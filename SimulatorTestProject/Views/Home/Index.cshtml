@@ -1,0 +1,143 @@
+﻿@using SimulatorTestProject.Models
+@model SimulatorTestProject.Models.PipeClass
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Simulator</h1>
+</div>
+
+<style>
+
+
+    #OpenVentil1ButtonDiv {
+        padding: 0px;
+        margin-left: 50px;
+        margin-top: 200px;
+        height: 10px;
+    }
+
+    #CloseVentil1ButtonDiv {
+        padding: 0px;
+        margin-left: 50px;
+        margin-top: 20px;
+        height: 10px;
+    }
+
+    #OpenVentil4ButtonDiv {
+        padding: 0px;
+        margin-left: 345px;
+        margin-top: 110px;
+        height: 10px;
+    }
+
+    #CloseVentil4ButtonDiv {
+        padding: 0px;
+        margin-left: 345px;
+        margin-top: 20px;
+        height: 10px;
+    }
+
+    #PipeMapDiv {
+        padding: 20px;
+        background-color: lightblue;
+    }
+
+    #Pipe1Div {
+        margin-left: 100px;
+        margin-top: -20px;
+        height: 10px;
+    }
+
+    #Pipe2Div {
+        margin-left: 398px;
+        margin-top: -115px;
+        height: 10px;
+    }
+</style>
+
+
+<html>
+
+
+<head>
+    <title>HTML Image as link</title>
+
+</head>
+
+
+<body>
+
+    <script>
+
+        function OpenVentil1() {
+            var img = document.getElementById("Pipe1");
+            img.src = "/Images/Pipe1Green.png";
+            return false;
+        }
+
+        function CloseVentil1() {
+            var img = document.getElementById("Pipe1");
+            img.src = "Images/Pipe1.png";
+            return false;
+        }
+
+        function OpenVentil4() {
+            var img = document.getElementById("Pipe2");
+            img.src = "/Images/Pipe2Green.png";
+            return false;
+        }
+
+        function CloseVentil4() {
+            var img = document.getElementById("Pipe2");
+            img.src = "Images/Pipe2.png";
+            return false;
+        }
+
+    </script>
+
+
+    <div id="PipeMapDiv">
+
+        <div id="OpenVentil1ButtonDiv">
+            <form>
+                <button name="button" value="first" asp-action="check">First</button>
+            </form>
+        </div>
+
+        <div id="CloseVentil1ButtonDiv">
+            <form>
+                <button name="button" value="second" asp-action="check">Second</button>
+            </form>
+            @TempData["buttonval"]
+        </div>
+
+        <img id="InterPoint" src="~/Images/InterPoint.png" style="margin-top:30px; width:50px; height:30px" />
+
+        <div id="Pipe1Div">
+            <img id="Pipe1" src="~/Images/Pipe1.png" style="width:250px; height:100px">
+        </div>
+
+        <img id="Ventil1Symbol1" src="~/Images/VentilSymbol.png" style="margin-top:-115px; margin-left:50px; width:50px; height:40px">
+
+        <img id="Ventil2Symbol1" src="~/Images/VentilSymbol.png" style="margin-top:65px; margin-left:245px; width:50px; height:40px">
+
+        <div id="Pipe2Div">
+            <img id="Pipe2" src="~/Images/Pipe2.png" style="width:250px; height:100px">
+        </div>
+
+        <div id="OpenVentil4ButtonDiv">
+            <button id="OpenVentil4Button" onclick="OpenVentil4()">Open</button>
+        </div>
+
+        <div id="CloseVentil4ButtonDiv">
+            <button id="CloseVentil4Button" onclick="CloseVentil4()">Close</button>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>
