@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using SimulatorTestProject.Models;
+using SimulatorTestProject.ViewModel;
 
 namespace SimulatorTestProject.Controllers
 {
@@ -23,8 +24,11 @@ namespace SimulatorTestProject.Controllers
 
         public IActionResult Index()
         {
-            
-            return View();
+            PipeViewModel model = new PipeViewModel();
+            VentilViewModel ventil = new VentilViewModel();
+
+            AllItemViewModel all = new AllItemViewModel();
+            return View(all);
         }
 
         public IActionResult Privacy()
@@ -32,17 +36,60 @@ namespace SimulatorTestProject.Controllers
             return View();
         }
 
-        public IActionResult check(string button)
+        public ActionResult TogglePipe(int Id)
         {
-            if (button == "first")
+            PipeViewModel model = new PipeViewModel();
+            foreach (PipeClass p in model.PipeList)
             {
-                TempData["buttonval"] = "first button clicked";
+                if (p.Id == Id)
+                {
+                    switch (p.Status)
+                    {
+                        case 1:
+                            p.Status = 2;
+                            break;
+                        case 2:
+                            p.Status = 1;
+                            break;
+                    }
+                    break;
+                }
             }
-            else
-            {
-                TempData["buttonval"] = "second button clicked";
-            }
+
+            string output = JsonConvert.SerializeObject(model.PipeList, Newtonsoft.Json.Formatting.Indented);
+            System.IO.File.WriteAllText("DAL/json.json", output);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ToggleVentil(int Id)
+        {
+            AllItemViewModel a = new AllItemViewModel();
+            foreach (VentilClass p in a.AllItemVentil)
+            {
+                if (p.Id == Id)
+                {
+                    switch (p.Status)
+                    {
+                        case 1:
+                            p.Status = 2;
+                            break;
+                        case 2:
+                            p.Status = 1;
+                            break;
+                    }
+                    break;
+                }
+            }
+
+            string output = JsonConvert.SerializeObject(a.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
+            System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details()
+        {
+            return View();
+
         }
 
 

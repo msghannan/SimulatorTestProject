@@ -1,8 +1,5 @@
 ﻿@using SimulatorTestProject.Models
-@model SimulatorTestProject.Models.PipeClass
-@{
-    ViewData["Title"] = "Home Page";
-}
+@model SimulatorTestProject.ViewModel.AllItemViewModel
 
 <div class="text-center">
     <h1 class="display-4">Simulator</h1>
@@ -71,6 +68,7 @@
 
     <script>
 
+
         function OpenVentil1() {
             var img = document.getElementById("Pipe1");
             img.src = "/Images/Pipe1Green.png";
@@ -95,22 +93,18 @@
             return false;
         }
 
+
     </script>
 
 
-    <div id="PipeMapDiv">
+    @*<div id="PipeMapDiv">
 
         <div id="OpenVentil1ButtonDiv">
-            <form>
-                <button name="button" value="first" asp-action="check">First</button>
-            </form>
+            <button name="button" onclick="OpenVentil1()">Open</button>
         </div>
 
         <div id="CloseVentil1ButtonDiv">
-            <form>
-                <button name="button" value="second" asp-action="check">Second</button>
-            </form>
-            @TempData["buttonval"]
+            <button name="button" onclick="CloseVentil1()">Close</button>
         </div>
 
         <img id="InterPoint" src="~/Images/InterPoint.png" style="margin-top:30px; width:50px; height:30px" />
@@ -135,7 +129,37 @@
             <button id="CloseVentil4Button" onclick="CloseVentil4()">Close</button>
         </div>
 
+    </div>*@
+
+
+
+
+    <div class="Pipe-Map" style="background-color:cornflowerblue; width:1000px; height:600px;">
+        @foreach (var v in Model.AllItemVentil)
+        {
+            if (v.Status == 1)
+            {
+
+                <div class="Pipe Pipe-Active">
+                    <img src="~/Images/VentilSymbolGreen.png" />
+                </div>
+
+                <a class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
+            }
+
+            else if (v.Status == 2)
+            {
+                <div class="Pipe-Control">
+                    <div class="Pipe Pipe-Inactive">
+                        <img src="~/Images/VentilSymbol.png" />
+                    </div>
+                    <a class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
+                </div>
+            }
+        }
     </div>
+
+
 
 
 

@@ -8,7 +8,7 @@ namespace SimulatorTestProject.Models
     public class VentilClass
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string VentilName { get; set; }
         public int Status { get; set; }
     }
 }

@@ -1,7 +1,15 @@
 [
+  
   {
     "Id": 1,
-    "Name": "Pipe1",
-    "Status":  1
+    "PipeName": "Pipe1",
+    "Status": 2
+  },
+
+  {
+    "Id": 2,
+    "PipeName": "Pipe2",
+    "Status": 2
   }
+
 ]
