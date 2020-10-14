@@ -10,5 +10,6 @@ namespace SimulatorTestProject.Models
         public int Id { get; set; }
         public string VentilName { get; set; }
         public int Status { get; set; }
+        public List<PipeClass> VentilPipeList { get; set; }
     }
 }

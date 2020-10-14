@@ -2,6 +2,14 @@
   {
     "Id": 1,
     "VentilName": "Ventil1",
-    "Status": 2
+    "Status": 1,
+    "VentilPipeList": 
+    [
+      {
+        "Id": 1,
+        "PipeName": "Pipe1",
+        "Status": 1
+      }
+    ]
   }
 ]
