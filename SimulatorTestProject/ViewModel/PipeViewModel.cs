@@ -14,7 +14,7 @@ namespace SimulatorTestProject.ViewModel
 
         public PipeViewModel()
         {
-            string json = File.ReadAllText("DAL/json.json");
+            string json = File.ReadAllText("DAL/PipeJSON.json");
             PipeList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PipeClass>>(json);
         }
 
