@@ -2,13 +2,24 @@
   {
     "Id": 1,
     "VentilName": "Ventil1",
-    "Status": 1,
-    "VentilPipeList": 
-    [
+    "Status": 2,
+    "VentilPipeList": [
       {
         "Id": 1,
         "PipeName": "Pipe1",
-        "Status": 1
+        "Status": 2
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "VentilName": "Ventil2",
+    "Status": 2,
+    "VentilPipeList": [
+      {
+        "Id": 2,
+        "PipeName": "Pipe2",
+        "Status": 2
       }
     ]
   }

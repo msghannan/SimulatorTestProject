@@ -134,30 +134,30 @@
 
 
 
-    <div class="Pipe-Map" style="background-color:cornflowerblue; width:1000px; height:600px;">
-        @foreach (var v in Model.AllItemVentil)
+<div class="Pipe-Map" style="background-color:cornflowerblue; width:1000px; height:600px;">
+    @foreach (var v in Model.AllItemVentil)
+    {
+        if (v.Status == 1)
         {
-            if (v.Status == 1)
-            {
 
-                <div class="Pipe Pipe-Active">
-                    <img src="~/Images/VentilSymbolGreen.png" />
-                </div>
+            <div class="Pipe Pipe-Active">
+                <img src="~/Images/VentilSymbolGreen.png" width="60" height="60"/>   
+            </div>
 
-                <a class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
-            }
-
-            else if (v.Status == 2)
-            {
-                <div class="Pipe-Control">
-                    <div class="Pipe Pipe-Inactive">
-                        <img src="~/Images/VentilSymbol.png" />
-                    </div>
-                    <a class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
-                </div>
-            }
+            <a class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
         }
-    </div>
+
+        else if (v.Status == 2)
+        {
+            <div class="Pipe-Control">
+                <div class="Pipe Pipe-Inactive">
+                    <img src="~/Images/VentilSymbol.png" width="60" height="60"/>
+                </div>
+                <a class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
+            </div>
+        }
+}
+</div>
 
 
 

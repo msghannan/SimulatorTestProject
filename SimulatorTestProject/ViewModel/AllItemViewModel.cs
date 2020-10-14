@@ -14,8 +14,10 @@ namespace SimulatorTestProject.ViewModel
 
         public AllItemViewModel()
         {
-            string json = File.ReadAllText("DAL/VentilJSON.json");
-            AllItemVentil = Newtonsoft.Json.JsonConvert.DeserializeObject<List<VentilClass>>(json);
+            string jsonVentil = File.ReadAllText("DAL/VentilJSON.json");
+            AllItemVentil = Newtonsoft.Json.JsonConvert.DeserializeObject<List<VentilClass>>(jsonVentil);
+            string jsonPipe = File.ReadAllText("DAL/PipeJSON.json");
+            AllItemPipe = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PipeClass>>(jsonPipe);
         }
     }
 }
