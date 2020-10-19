@@ -65,12 +65,12 @@
   {
     "Id": 4,
     "VentilName": "Ventil4",
-    "Status": 2,
+    "Status": 1,
     "VentilPipeList": [
       {
         "Id": 7,
         "PipeName": "Pipe2Active",
-        "Status": 2,
+        "Status": 1,
         "ImageSRC": null,
         "ImageSRCActive": "~/Images/Pipe2Green.png"
       },

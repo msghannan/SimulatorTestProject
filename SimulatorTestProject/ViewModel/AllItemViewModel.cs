@@ -21,7 +21,7 @@ namespace SimulatorTestProject.ViewModel
             string jsonPipe = File.ReadAllText("DAL/PipeJSON.json");
             AllItemPipe = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PipeClass>>(jsonPipe);
 
-            string jsonPump = File.ReadAllText("DAL/PipeJSON.json");
+            string jsonPump = File.ReadAllText("DAL/PumpJSON.json");
             AllItemPump = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PumpClass>>(jsonPump);
         }
     }
