@@ -302,7 +302,55 @@
     }
 
     #Ventil5CloseButton {
-       height: auto;
+        height: auto;
+        width: 70px;
+        font-size: 15px;
+        margin-left: 400px;
+        margin-top: 210px
+    }
+
+
+
+
+
+    #Pump1OpenImg {
+        height: 30px;
+        width: 50px;
+        margin-top: 290px;
+        margin-left: -59px
+    }
+
+    #Pump1CloseImg {
+        height: 30px;
+        width: 50px;
+        margin-top: 290px;
+        margin-left: -59px
+    }
+
+    #Pipe5CloseImg {
+        height: 10px;
+        width: auto;
+        margin-top: 290px;
+        margin-left: -105px;
+    }
+
+    #Pipe5ActiveImg {
+        height: 10px;
+        width: auto;
+        margin-top: 290px;
+        margin-left: -205px;
+    }
+
+    #Pump1OpenButton {
+        height: auto;
+        width: 70px;
+        font-size: 15px;
+        margin-left: 400px;
+        margin-top: 210px
+    }
+
+    #Pump1OpenButton {
+        height: auto;
         width: 70px;
         font-size: 15px;
         margin-left: 400px;
@@ -390,82 +438,82 @@
 
 
 
-<div class="Pipe-Map" style="background-color: cornflowerblue ">
+    <div class="Pipe-Map" style="background-color: cornflowerblue ">
 
 
-    @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 1))
-    {
-        if (v.Status == 1)
+        @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 1))
         {
-
-            <a id="Ventil1CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
-
-            <img id="Ventil1ActiveImg" src="~/Images/VentilSymbolGreen.png" />
-
-            @foreach (PipeClass p in v.VentilPipeList)
+            if (v.Status == 1)
             {
-                <img id="Pipe1ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+
+                <a id="Ventil1CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
+
+                <img id="Ventil1ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+
+                @foreach (PipeClass p in v.VentilPipeList)
+                {
+                    <img id="Pipe1ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+
             }
 
-        }
-
-        else if (v.Status == 2)
-        {
-
-            <a id="Ventil1OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
-
-
-            <img id="Ventil1CloseImg" src="~/Images/VentilSymbol.png" />
-
-            @foreach (PipeClass p in v.VentilPipeList)
+            else if (v.Status == 2)
             {
-                <img id="Pipe1CloseImg" src="@Url.Content(p.ImageSRC)" />
+
+                <a id="Ventil1OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
+
+
+                <img id="Ventil1CloseImg" src="~/Images/VentilSymbol.png" />
+
+                @foreach (PipeClass p in v.VentilPipeList)
+                {
+                    <img id="Pipe1CloseImg" src="@Url.Content(p.ImageSRC)" />
+                }
             }
         }
-    }
 
 
 
 
 
-    @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 4))
-    {
-        if (v.Status == 1)
+        @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 4))
         {
-
-
-
-            <img id="Ventil4ActiveImg" src="~/Images/VentilSymbolGreen.png" />
-
-            @foreach (PipeClass p in v.VentilPipeList)
+            if (v.Status == 1)
             {
-                <img id="Pipe2ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+
+
+
+                <img id="Ventil4ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+
+                @foreach (PipeClass p in v.VentilPipeList)
+                {
+                    <img id="Pipe2ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+
+                <a id="Ventil4CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
+
             }
 
-            <a id="Ventil4CloseButton"  class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
-
-        }
-
-        else if (v.Status == 2)
-        {
-
-
-
-
-            <img id="Ventil4CloseImg" src="~/Images/VentilSymbol.png" />
-
-            @foreach (PipeClass p in v.VentilPipeList)
+            else if (v.Status == 2)
             {
-                <img id="Pipe2CloseImg" src="@Url.Content(p.ImageSRC)" />
+
+
+
+
+                <img id="Ventil4CloseImg" src="~/Images/VentilSymbol.png" />
+
+                @foreach (PipeClass p in v.VentilPipeList)
+                {
+                    <img id="Pipe2CloseImg" src="@Url.Content(p.ImageSRC)" />
+                }
+
+                <a id="Ventil4OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
             }
-
-            <a id="Ventil4OpenButton"  class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
         }
-    }
 
 
 
-    @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 2))
+        @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 2))
         {
             if (v.Status == 1)
             {
@@ -504,38 +552,38 @@
 
 
         @*@foreach (var v in Model.AllItemVentil.Where(v => v.Id == 3))
-        {
-            if (v.Status == 1)
             {
-
-
-                <a id="Ventil3CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
-
-                <img id="Ventil3ActiveImg" src="~/Images/VentilSymbolGreen.png" />
-
-                @foreach (PipeClass p in v.VentilPipeList)
+                if (v.Status == 1)
                 {
-                    <img id="Pipe4ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+
+
+                    <a id="Ventil3CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
+
+                    <img id="Ventil3ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+
+                    @foreach (PipeClass p in v.VentilPipeList)
+                    {
+                        <img id="Pipe4ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+                    }
+
+
+
                 }
-
-
-
-            }
-            else if (v.Status == 2)
-            {
-
-
-                <a id="Ventil3OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
-
-                <img id="Ventil3CloseImg" src="~/Images/VentilSymbol.png" />
-
-                @foreach (PipeClass p in v.VentilPipeList)
+                else if (v.Status == 2)
                 {
-                    <img id="Pipe4CloseImg" src="@Url.Content(p.ImageSRC)" />
-                }
 
-            }
-        }*@
+
+                    <a id="Ventil3OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
+
+                    <img id="Ventil3CloseImg" src="~/Images/VentilSymbol.png" />
+
+                    @foreach (PipeClass p in v.VentilPipeList)
+                    {
+                        <img id="Pipe4CloseImg" src="@Url.Content(p.ImageSRC)" />
+                    }
+
+                }
+            }*@
 
 
 
@@ -547,7 +595,7 @@
 
                 <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
 
-                <img id="Ventil5ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+                <img id="Ventil5ActiveImg" src="~/Images/PumpSymbolGreen.png" />
 
                 @foreach (PipeClass p in v.VentilPipeList)
                 {
@@ -564,7 +612,7 @@
 
                 <a id="Ventil5OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
 
-                <img id="Ventil5CloseImg" src="~/Images/VentilSymbol.png" />
+                <img id="Ventil5CloseImg" src="~/Images/PumpSymbol.png" />
 
                 @foreach (PipeClass p in v.VentilPipeList)
                 {
@@ -584,41 +632,41 @@
 
 
 
-    @*@foreach (var pu in Model.AllItemPump)
+        @foreach (var pu in Model.AllItemPump)
         {
             if (pu.Status == 1)
             {
 
 
-                <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/TogglePipePump/@pu.Id.ToString()">Stäng</a>
+                <a id="Pump1CloseButton" class="btn btn-primary" href="Home/TogglePipePump/@pu.Id.ToString()">Stäng</a>
 
-                <img id="Ventil5ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+                <img id="Pump1OpenImg" src="~/Images/PumpSymbolGreen.png" />
 
                 @foreach (PipeClass p in pu.PumpPipeList)
                 {
-                    <img id="Pipe3ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+                    <img id="Pipe5ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
                 }
 
 
 
             }
 
-            else if (v.Status == 2)
+            else if (pu.Status == 2)
             {
 
 
-                <a id="Ventil5OpenButton" class="btn btn-primary" href="Home/TogglePipePump/@pu.Id.ToString()">Öppna</a>
+                <a id="Pump1OpenButton" class="btn btn-primary" href="Home/TogglePipePump/@pu.Id.ToString()">Öppna</a>
 
-                <img id="Ventil5CloseImg" src="~/Images/VentilSymbol.png" />
+                <img id="Pump1OpenImg" src="~/Images/PumpSymbol.png" />
 
                 @foreach (PipeClass p in pu.PumpPipeList)
                 {
-                    <img id="Pipe3CloseImg" src="@Url.Content(p.ImageSRC)" />
+                    <img id="Pipe5CloseImg" src="@Url.Content(p.ImageSRC)" />
                 }
 
-            }*@
-
-</div>
+            }
+        }
+    </div>
 
 
 

@@ -18,7 +18,6 @@
     <None Include="wwwroot\Images\Pipe5Green.png" />
     <None Include="wwwroot\Images\Pipe6.png" />
     <None Include="wwwroot\Images\Pipe6Green.png" />
-    <None Include="wwwroot\Images\PumpSymbol.png" />
     <None Include="wwwroot\Images\TankSymbol.png" />
     <None Include="wwwroot\Images\TankSymbolGreen.png" />
     <None Include="wwwroot\Images\VentilSymbol.png" />
