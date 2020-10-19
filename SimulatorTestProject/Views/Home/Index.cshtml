@@ -141,9 +141,14 @@
         {
 
             <div class="Pipe Pipe-Active">
-                <img src="~/Images/VentilSymbolGreen.png" width="60" height="60"/>   
+                <img src="~/Images/VentilSymbolGreen.png" width="60" height="60"/>
             </div>
-
+            <div>
+                @foreach (PipeClass q in v.VentilPipeList)
+                {
+                    <img src=@q.ImageSrcGreen>
+                }
+            </div>
             <a class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
         }
 
@@ -152,6 +157,12 @@
             <div class="Pipe-Control">
                 <div class="Pipe Pipe-Inactive">
                     <img src="~/Images/VentilSymbol.png" width="60" height="60"/>
+                </div>
+                <div>
+                    @foreach (PipeClass q in v.VentilPipeList)
+                    {
+                        <img src=@q.ImageSrc>
+                    }
                 </div>
                 <a class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
             </div>

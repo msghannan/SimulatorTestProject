@@ -3,20 +3,5 @@
     "Id": 1,
     "PipeName": "Pipe1",
     "Status": 1
-  },
-  {
-    "Id": 2,
-    "PipeName": "Pipe2",
-    "Status": 1
-  },
-  {
-    "Id": 3,
-    "PipeName": "Pipe3",
-    "Status": 1
-  },
-  {
-    "Id": 4,
-    "PipeName": "Pipe4",
-    "Status": 1
   }
 ]

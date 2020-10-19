@@ -85,9 +85,11 @@ namespace SimulatorTestProject.Controllers
                         {
                             case 1:
                                 q.Status = 2;
+                                q.ImageSrc = q.ImageSrcGreen;
                                 break;
                             case 2:
                                 q.Status = 1;
+                                q.ImageSrcGreen = q.ImageSrc;
                                 break;
                         }
                         break;

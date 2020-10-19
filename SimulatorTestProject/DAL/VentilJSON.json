@@ -7,7 +7,9 @@
       {
         "Id": 1,
         "PipeName": "Pipe1",
-        "Status": 2
+        "Status": 2,
+        "ImageSrc": "Pipe1.png",
+        "ImageSrcGreen": "Pipe1.png"
       }
     ]
   },
@@ -19,7 +21,9 @@
       {
         "Id": 2,
         "PipeName": "Pipe2",
-        "Status": 2
+        "Status": 2,
+        "ImageSrc": "Pipe1Green.png",
+        "ImageSrcGreen": "Pipe1Green.png"
       }
     ]
   }
