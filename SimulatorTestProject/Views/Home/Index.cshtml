@@ -467,7 +467,7 @@
 
                 @foreach (PipeClass p in v.VentilPipeList)
                 {
-                    <img id="Pipe1CloseImg" src="@Url.Content(p.ImageSRC)" />
+                    <img id="Pipe1CloseImg" src="~/Images/Pipe1.png" />
                 }
             }
         }
@@ -504,7 +504,7 @@
 
                 @foreach (PipeClass p in v.VentilPipeList)
                 {
-                    <img id="Pipe2CloseImg" src="@Url.Content(p.ImageSRC)" />
+                    <img id="Pipe2CloseImg" src="~/Images/Pipe2.png" />
                 }
 
                 <a id="Ventil4OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
@@ -542,7 +542,7 @@
 
                 @foreach (PipeClass p in v.VentilPipeList)
                 {
-                    <img id="Pipe6CloseImg" src="@Url.Content(p.ImageSRC)" />
+                    <img id="Pipe6CloseImg" src="~/Images/Pipe6.png" />
                 }
 
             }
@@ -579,7 +579,7 @@
 
                     @foreach (PipeClass p in v.VentilPipeList)
                     {
-                        <img id="Pipe4CloseImg" src="@Url.Content(p.ImageSRC)" />
+                        <img id="Pipe4CloseImg" src="~/Images/Pipe4.png" />
                     }
 
                 }
@@ -595,7 +595,7 @@
 
                 <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
 
-                <img id="Ventil5ActiveImg" src="~/Images/PumpSymbolGreen.png" />
+                <img id="Ventil5ActiveImg" src="~/Images/VentilSymbolGreen.png" />
 
                 @foreach (PipeClass p in v.VentilPipeList)
                 {
@@ -612,11 +612,11 @@
 
                 <a id="Ventil5OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
 
-                <img id="Ventil5CloseImg" src="~/Images/PumpSymbol.png" />
+                <img id="Ventil5CloseImg" src="~/Images/VentilSymbol.png" />
 
                 @foreach (PipeClass p in v.VentilPipeList)
                 {
-                    <img id="Pipe3CloseImg" src="@Url.Content(p.ImageSRC)" />
+                    <img id="Pipe3CloseImg" src="~/Images/Pipe3.png" />
                 }
 
             }
@@ -638,7 +638,7 @@
             {
 
 
-                <a id="Pump1CloseButton" class="btn btn-primary" href="Home/TogglePipePump/@pu.Id.ToString()">Stäng</a>
+                <a id="Pump1CloseButton" class="btn btn-primary" href="Home/TogglePump/@pu.Id.ToString()">Stäng</a>
 
                 <img id="Pump1OpenImg" src="~/Images/PumpSymbolGreen.png" />
 
@@ -655,13 +655,13 @@
             {
 
 
-                <a id="Pump1OpenButton" class="btn btn-primary" href="Home/TogglePipePump/@pu.Id.ToString()">Öppna</a>
+                <a id="Pump1OpenButton" class="btn btn-primary" href="Home/TogglePump/@pu.Id.ToString()">Öppna</a>
 
                 <img id="Pump1OpenImg" src="~/Images/PumpSymbol.png" />
 
                 @foreach (PipeClass p in pu.PumpPipeList)
                 {
-                    <img id="Pipe5CloseImg" src="@Url.Content(p.ImageSRC)" />
+                    <img id="Pipe5CloseImg" src="~/Images/Pipe5.png" />
                 }
 
             }

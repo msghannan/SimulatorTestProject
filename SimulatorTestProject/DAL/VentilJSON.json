@@ -8,15 +8,7 @@
         "Id": 1,
         "PipeName": "Pipe1Active",
         "Status": 2,
-        "ImageSRC": null,
         "ImageSRCActive": "~/Images/Pipe1Green.png"
-      },
-      {
-        "Id": 2,
-        "PipeName": "Pipe1",
-        "Status": 1,
-        "ImageSRC": "~/Images/Pipe1.png",
-        "ImageSRCActive": null
       }
     ]
   },
@@ -29,15 +21,7 @@
         "Id": 3,
         "PipeName": "Pipe6Active",
         "Status": 2,
-        "ImageSRC": null,
         "ImageSRCActive": "~/Images/Pipe6Green.png"
-      },
-      {
-        "Id": 4,
-        "PipeName": "Pipe6",
-        "Status": 1,
-        "ImageSRC": "~/Images/Pipe6.png",
-        "ImageSRCActive": null
       }
     ]
   },
@@ -50,15 +34,7 @@
         "Id": 5,
         "PipeName": "Pipe4Active",
         "Status": 2,
-        "ImageSRC": null,
         "ImageSRCActive": "~/Images/Pipe4Green.png"
-      },
-      {
-        "Id": 6,
-        "PipeName": "Pipe4",
-        "Status": 1,
-        "ImageSRC": "~/Images/Pipe4.png",
-        "ImageSRCActive": null
       }
     ]
   },
@@ -71,15 +47,7 @@
         "Id": 7,
         "PipeName": "Pipe2Active",
         "Status": 2,
-        "ImageSRC": null,
         "ImageSRCActive": "~/Images/Pipe2Green.png"
-      },
-      {
-        "Id": 8,
-        "PipeName": "Pipe2",
-        "Status": 1,
-        "ImageSRC": "~/Images/Pipe2.png",
-        "ImageSRCActive": null
       }
     ]
   },
@@ -92,15 +60,7 @@
         "Id": 9,
         "PipeName": "Pipe3Active",
         "Status": 2,
-        "ImageSRC": null,
         "ImageSRCActive": "~/Images/Pipe3Green.png"
-      },
-      {
-        "Id": 10,
-        "PipeName": "Pipe2",
-        "Status": 1,
-        "ImageSRC": "~/Images/Pipe3.png",
-        "ImageSRCActive": null
       }
     ]
   }

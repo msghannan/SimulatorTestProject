@@ -10,7 +10,6 @@ namespace SimulatorTestProject.Models
         public int Id { get; set; }
         public string PipeName { get; set; }
         public int Status { get; set; }
-        public string ImageSRC { get; set; }
         public string ImageSRCActive { get; set; }
     }
 }

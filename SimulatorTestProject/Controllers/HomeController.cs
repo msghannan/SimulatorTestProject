@@ -37,7 +37,7 @@ namespace SimulatorTestProject.Controllers
             return View();
         }
 
-        public ActionResult TogglePipePump(int Id)
+        public ActionResult TogglePump(int Id)
         {
             AllItemViewModel a = new AllItemViewModel();
             foreach (PumpClass pu in a.AllItemPump)
@@ -72,8 +72,8 @@ namespace SimulatorTestProject.Controllers
                 }
             }
 
-            string output = JsonConvert.SerializeObject(a.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
+            string output = JsonConvert.SerializeObject(a.AllItemPump, Newtonsoft.Json.Formatting.Indented);
+            System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
             return RedirectToAction("Index");
         }
 
