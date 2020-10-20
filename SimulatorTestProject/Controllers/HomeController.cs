@@ -37,59 +37,72 @@ namespace SimulatorTestProject.Controllers
             return View();
         }
 
-        //public ActionResult TogglePipe(int Id)
-        //{
-        //    PipeViewModel model = new PipeViewModel();
-        //    foreach (PipeClass p in model.PipeList)
-        //    {
-        //        if (p.Id == Id)
-        //        {
-        //            switch (p.Status)
-        //            {
-        //                case 1:
-        //                    p.Status = 2;
-        //                    break;
-        //                case 2:
-        //                    p.Status = 1;
-        //                    break;
-        //            }
-        //            break;
-        //        }
-        //    }
+        public ActionResult TogglePump(int Id)
+        {
+            AllItemViewModel a = new AllItemViewModel();
+            foreach (PumpClass pu in a.AllItemPump)
+            {
+                if (pu.Id == Id)
+                {
+                    switch (pu.Status)
+                    {
+                        case 1:
+                            pu.Status = 2;
+                            break;
+                        case 2:
+                            pu.Status = 1;
+                            break;
+                    }
 
-        //    string output = JsonConvert.SerializeObject(model.PipeList, Newtonsoft.Json.Formatting.Indented);
-        //    System.IO.File.WriteAllText("DAL/json.json", output);
-        //    return RedirectToAction("Index");
-        //}
+                    foreach (PipeClass p in pu.PumpPipeList)
+                    {
+                        switch (p.Status)
+                        {
+                            case 1:
+                                p.Status = 2;
+                                break;
+                            case 2:
+                                p.Status = 1;
+                                break;
+                        }
+                        break;
+                    }
+                    break;
+
+                }
+            }
+
+            string output = JsonConvert.SerializeObject(a.AllItemPump, Newtonsoft.Json.Formatting.Indented);
+            System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
+            return RedirectToAction("Index");
+        }
 
         public ActionResult ToggleVentil(int Id)
         {
             AllItemViewModel a = new AllItemViewModel();
-            foreach (VentilClass p in a.AllItemVentil)
+            foreach (VentilClass v in a.AllItemVentil)
             {
-                if (p.Id == Id)
+                if (v.Id == Id)
                 {
-                    switch (p.Status)
+                    switch (v.Status)
                     {
                         case 1:
-                            p.Status = 2;
+                            v.Status = 2;
                             break;
                         case 2:
-                            p.Status = 1;
+                            v.Status = 1;
                             break;
                     }
 
-                    foreach (PipeClass q in p.VentilPipeList)
+                    foreach (PipeClass p in v.VentilPipeList)
                     {
-                        switch (q.Status)
+                        switch (p.Status)
                         {
                             case 1:
-                                q.Status = 2;
-                                q.ImageSrc = q.ImageSrcGreen;
+                                p.Status = 2;
                                 break;
                             case 2:
-                                q.Status = 1;
-                                q.ImageSrcGreen = q.ImageSrc;
+                                p.Status = 1;
                                 break;
                         }
                         break;

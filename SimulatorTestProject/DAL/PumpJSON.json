@@ -1,0 +1,15 @@
+[
+  {
+    "Id": 1,
+    "PumpName": "Pump1",
+    "Status": 1,
+    "PumpPipeList": [
+      {
+        "Id": 1,
+        "PipeName": "Pipe5Active",
+        "Status": 1,
+        "ImageSRCActive": "~/Images/Pipe5Green.png"
+      }
+    ]
+  }
+]
