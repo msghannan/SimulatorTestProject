@@ -32,7 +32,7 @@ namespace SimulatorTestProject.Controllers
             return View(all);
         }
 
-        public IActionResult Privacy()
+        public IActionResult JsonInfo()
         {
             return View();
         }
