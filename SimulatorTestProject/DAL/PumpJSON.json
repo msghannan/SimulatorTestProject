@@ -2,12 +2,12 @@
   {
     "Id": 1,
     "PumpName": "Pump1",
-    "Status": 1,
+    "Status": 2,
     "PumpPipeList": [
       {
         "Id": 1,
         "PipeName": "Pipe5Active",
-        "Status": 1,
+        "Status": 2,
         "ImageSRCActive": "~/Images/Pipe5Green.png"
       }
     ]
