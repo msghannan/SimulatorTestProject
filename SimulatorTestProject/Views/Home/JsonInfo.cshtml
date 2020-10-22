@@ -2,9 +2,89 @@
 @{
     ViewData["Title"] = "Json Information";
 }
+
+<style>
+    #wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        width: auto;
+    }
+
+    #inner1 {
+        float: left;
+    }
+
+    #inner2 {
+        float: left;
+        clear: left;
+    }
+</style>
+
 <h1>@ViewData["Title"]</h1>
-@foreach(VentilClass v in Model.AllItemVentil)
-{
-
-}
-
+<div id="wrapper">
+    <div id="inner1">
+        <h3>Ventiler</h3>
+        @foreach (VentilClass v in Model.AllItemVentil)
+        {
+            if (v.Status == 1)
+            {
+                <div class="card m-3" style="width:150px; float:left;">
+                    <div class="card-header" style="text-align:center">
+                        <h3>@v.VentilName</h3>
+                    </div>
+                    <img class="card-img-top" src="~/Images/VentilSymbolGreen.png" style="height:100px; width:150px;" asp-append-version="true" />
+                    <div class="card-footer text-center">
+                        <a asp-controller="home" asp-action="detailsVentil" asp-route-id="@v.Id"
+                           class="btn btn-primary m-1">View</a>
+                    </div>
+                </div>
+            }
+            else if (v.Status == 2)
+            {
+                <div class="card m-3" style="width:150px; float:left;">
+                    <div class="card-header" style="text-align:center">
+                        <h3>@v.VentilName</h3>
+                    </div>
+                    <img class="card-img-top" src="~/Images/VentilSymbol.png" style="height:100px; width:150px;" asp-append-version="true" />
+                    <div class="card-footer text-center">
+                        <a asp-controller="home" asp-action="detailsVentil" asp-route-id="@v.Id"
+                           class="btn btn-primary m-1">View</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div id="inner2">
+        <h3>Pumpar</h3>
+        @foreach (PumpClass p in Model.AllItemPump)
+        {
+            if (p.Status == 1)
+            {
+                <div class="card m-3" style="width:150px;">
+                    <div class="card-header" style="text-align:center">
+                        <h3>@p.PumpName</h3>
+                    </div>
+                    <img class="card-img-top" src="~/Images/PumpSymbolGreen.png" style="height:100px; width:150px;" asp-append-version="true" />
+                    <div class="card-footer text-center">
+                        <a asp-controller="home" asp-action="detailsPump" asp-route-id="@p.Id"
+                           class="btn btn-primary m-1">View</a>
+                    </div>
+                </div>
+            }
+            else if (p.Status == 2)
+            {
+                <div class="card m-3" style="width:150px;">
+                    <div class="card-header" style="text-align:center">
+                        <h3>@p.PumpName</h3>
+                    </div>
+                    <img class="card-img-top" src="~/Images/PumpSymbol.png" style="height:100px; width:150px;" asp-append-version="true" />
+                    <div class="card-footer text-center">
+                        <a asp-controller="home" asp-action="detailsPump" asp-route-id="@p.Id"
+                           class="btn btn-primary m-1">View</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
