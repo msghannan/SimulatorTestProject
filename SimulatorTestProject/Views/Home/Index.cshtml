@@ -173,21 +173,21 @@
         height: 30px;
         width: 50px;
         margin-top: 280px;
-        margin-left: -65px
+        margin-left: -60px
     }
 
     #Ventil2ActiveImg {
         height: 30px;
         width: 50px;
         margin-top: 280px;
-        margin-left: -65px
+        margin-left: -60px
     }
 
     #Pipe6CloseImg {
         height: 10px;
         width: auto;
         margin-top: 290px;
-        margin-left: -80px;
+        margin-left: -155px;
     }
 
     #Pipe6ActiveImg {
@@ -219,46 +219,45 @@
     #Ventil3CloseImg {
         height: 30px;
         width: 50px;
-        margin-top: 210px;
-        margin-left: -63px;
+        margin-top: 290px;
+        margin-left: -65px;
     }
 
     #Ventil3ActiveImg {
         height: 30px;
         width: 50px;
-        margin-top: 210px;
-        margin-left: -63px;
-        margin-right: 50px;
+        margin-top: 290px;
+        margin-left: -65px;
     }
 
     #Pipe4CloseImg {
         height: 10px;
-        width: 50px;
-        margin-top: 210px;
-        margin-left: -80px;
+        width: 40px;
+        margin-top: 290px;
+        margin-left: -98px;
     }
 
     #Pipe4ActiveImg {
         height: 10px;
         width: 40px;
-        margin-top: 210px;
-        margin-left: -100px;
+        margin-top: 290px;
+        margin-left: -98px;
     }
 
     #Ventil3OpenButton {
         height: auto;
-        width: auto;
+        width: 70px;
         font-size: 15px;
         margin-left: 200px;
-        margin-top: 140px
+        margin-top: 210px
     }
 
     #Ventil3CloseButton {
         height: auto;
-        width: auto;
+        width: 70px;
         font-size: 15px;
         margin-left: 200px;
-        margin-top: 140px
+        margin-top: 210px
     }
 
 
@@ -269,21 +268,21 @@
         height: 30px;
         width: 50px;
         margin-top: 290px;
-        margin-left: -59px
+        margin-left: -60px
     }
 
     #Ventil5ActiveImg {
         height: 30px;
         width: 50px;
         margin-top: 290px;
-        margin-left: -59px
+        margin-left: -60px
     }
 
     #Pipe3CloseImg {
         height: 10px;
         width: auto;
         margin-top: 290px;
-        margin-left: -105px;
+        margin-left: -205px;
     }
 
     #Pipe3ActiveImg {
@@ -297,7 +296,7 @@
         height: auto;
         width: 70px;
         font-size: 15px;
-        margin-left: 400px;
+        margin-left: 185px;
         margin-top: 210px
     }
 
@@ -305,7 +304,7 @@
         height: auto;
         width: 70px;
         font-size: 15px;
-        margin-left: 400px;
+        margin-left: 185px;
         margin-top: 210px
     }
 
@@ -314,47 +313,47 @@
 
 
     #Pump1OpenImg {
-        height: 30px;
+         height: 50px;
         width: 50px;
-        margin-top: 290px;
-        margin-left: -59px
+        margin-top: 270px;
+        margin-left: -65px
     }
 
     #Pump1CloseImg {
-        height: 30px;
+        height: 50px;
         width: 50px;
-        margin-top: 290px;
-        margin-left: -59px
+        margin-top: 270px;
+        margin-left: -65px
     }
 
     #Pipe5CloseImg {
         height: 10px;
-        width: auto;
+        width: 60px;
         margin-top: 290px;
-        margin-left: -105px;
+        margin-left: -115px;
     }
 
     #Pipe5ActiveImg {
         height: 10px;
-        width: auto;
+        width: 60px;
         margin-top: 290px;
-        margin-left: -205px;
+        margin-left: -115px;
     }
 
     #Pump1OpenButton {
         height: auto;
         width: 70px;
         font-size: 15px;
-        margin-left: 400px;
-        margin-top: 210px
+        margin-left: -310px;
+        margin-top: 180px
     }
 
-    #Pump1OpenButton {
+    #Pump1CloseButton {
         height: auto;
         width: 70px;
         font-size: 15px;
-        margin-left: 400px;
-        margin-top: 210px
+        margin-left: -310px;
+        margin-top: 180px
     }
 </style>
 
@@ -551,7 +550,7 @@
 
 
 
-        @*@foreach (var v in Model.AllItemVentil.Where(v => v.Id == 3))
+        @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 3))
             {
                 if (v.Status == 1)
                 {
@@ -583,7 +582,7 @@
                     }
 
                 }
-            }*@
+            }
 
 
 
@@ -657,7 +656,7 @@
 
                 <a id="Pump1OpenButton" class="btn btn-primary" href="Home/TogglePump/@pu.Id.ToString()">Öppna</a>
 
-                <img id="Pump1OpenImg" src="~/Images/PumpSymbol.png" />
+                <img id="Pump1CloseImg" src="~/Images/PumpSymbol.png" />
 
                 @foreach (PipeClass p in pu.PumpPipeList)
                 {
