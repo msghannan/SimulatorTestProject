@@ -1,0 +1,28 @@
+﻿@using SimulatorTestProject.Models
+@model IEnumerable<SimulatorTestProject.Models.PumpClass>
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+@foreach (PumpClass pu in Model)
+{
+    <div class="card m-3" style="width:150px;">
+        <div class="card-header" style="text-align:center">
+            <b>@pu.PumpName</b>
+        </div>
+    </div>
+    @foreach (PipeClass p in pu.PumpPipeList)
+    {
+        if (p.Status == 1)
+        {
+            <img id="GreenLight" src="~/Images/GreenLight.png" style="height:50px; width:50px;" />
+            <b>Röret är aktivt!</b>
+        }
+        else
+        {
+            <img id="RedLight" src="~/Images/RedLight.png" style="height:50px; width:50px;" />
+            <b>Röret är inaktivt!</b>
+        }
+    }
+}

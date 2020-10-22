@@ -1,0 +1,28 @@
+﻿@using SimulatorTestProject.Models
+@model IEnumerable<SimulatorTestProject.Models.VentilClass>
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+@foreach (VentilClass v in Model)
+{
+    <div class="card m-3" style="width:150px;">
+        <div class="card-header" style="text-align:center">
+            <b>@v.VentilName</b>
+        </div>
+    </div>
+    @foreach (PipeClass p in v.VentilPipeList)
+    {
+        if (p.Status == 1)
+        {
+            <img id="GreenLight" src="~/Images/GreenLight.png" style="height:50px; width:50px;" />
+            <b>Röret är aktivt!</b>
+        }
+        else
+        {
+            <img id="RedLight" src="~/Images/RedLight.png" style="height:50px; width:50px;" />
+            <b>Röret är inaktivt!</b>
+        }
+    }
+}

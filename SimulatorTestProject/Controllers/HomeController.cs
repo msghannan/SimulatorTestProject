@@ -34,7 +34,8 @@ namespace SimulatorTestProject.Controllers
 
         public IActionResult JsonInfo()
         {
-            return View();
+            AllItemViewModel all = new AllItemViewModel();
+            return View(all);
         }
 
         public ActionResult TogglePump(int Id)
@@ -143,12 +144,23 @@ namespace SimulatorTestProject.Controllers
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
             return RedirectToAction("Index");
         }
-        public IActionResult Details()
+        public IActionResult DetailsVentil(int id)
         {
-            return View();
+            var webClient = new WebClient();
+            var jsonFile = webClient.DownloadString(@"DAL\VentilJSON.json");
+            var dataFromJson = JsonConvert.DeserializeObject<List<VentilClass>>(jsonFile).Where(j => j.Id == id);
 
+            return View(dataFromJson);
         }
 
+        public IActionResult DetailsPump(int id)
+        {
+            var webClient = new WebClient();
+            var jsonFile = webClient.DownloadString(@"DAL\PumpJSON.json");
+            var dataFromJson = JsonConvert.DeserializeObject<List<PumpClass>>(jsonFile).Where(j => j.Id == id);
+
+            return View(dataFromJson);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
