@@ -4,25 +4,47 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-@foreach (VentilClass v in Model)
-{
-    <div class="card m-3" style="width:150px;">
-        <div class="card-header" style="text-align:center">
-            <b>@v.VentilName</b>
-        </div>
-    </div>
-    @foreach (PipeClass p in v.VentilPipeList)
-    {
-        if (p.Status == 1)
-        {
-            <img id="GreenLight" src="~/Images/GreenLight.png" style="height:50px; width:50px;" />
-            <b>Röret är aktivt!</b>
-        }
-        else
-        {
-            <img id="RedLight" src="~/Images/RedLight.png" style="height:50px; width:50px;" />
-            <b>Röret är inaktivt!</b>
-        }
+<style>
+    #wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        width: auto;
     }
-}
+
+    #inner1 {
+        float: left;
+    }
+
+    #inner2 {
+        float: left;
+        clear: left;
+    }
+</style>
+
+<h1>Details</h1>
+<div id="wrapper">
+    @foreach (VentilClass v in Model)
+    {
+        <div class="card m-3" style="width:150px;">
+            <div class="card-header" style="text-align:center">
+                <b>@v.VentilName</b>
+            </div>
+        </div>
+        <div id="inner1">
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                if (p.Status == 1)
+                {
+                    <img id="GreenLight" src="~/Images/GreenLight.png" style="height:40px; width:40px;" />
+                    <b>Röret är aktivt!</b>
+                }
+                else
+                {
+                    <img id="RedLight" src="~/Images/RedLight.png" style="height:40px; width:40px;" />
+                    <b>Röret är inaktivt!</b>
+                }
+            }
+        </div>
+    }
+</div>

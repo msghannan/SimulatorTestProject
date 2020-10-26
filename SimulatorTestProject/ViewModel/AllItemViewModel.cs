@@ -12,6 +12,7 @@ namespace SimulatorTestProject.ViewModel
         public List<VentilClass> AllItemVentil { get; set; }
         public List<PipeClass> AllItemPipe { get; set; }
         public List<PumpClass> AllItemPump { get; set; }
+        public List<TankClass> AllItemTank { get; set; }
 
         public AllItemViewModel()
         {
@@ -23,6 +24,9 @@ namespace SimulatorTestProject.ViewModel
 
             string jsonPump = File.ReadAllText("DAL/PumpJSON.json");
             AllItemPump = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PumpClass>>(jsonPump);
+
+            string jsonTank = File.ReadAllText("DAL/TankJSON.json");
+            AllItemTank = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TankClass>>(jsonTank);
         }
     }
 }
