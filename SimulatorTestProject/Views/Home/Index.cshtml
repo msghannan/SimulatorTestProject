@@ -457,7 +457,7 @@
             </div>
         </div>
     </div>
-
+    <!-- Modal Pump -->
     <div class="modal fade" id="pumpVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -492,10 +492,13 @@
             }
 
         }
-
+        //data-toggle="modal" data-target="#ventilVarning" insert later 
         else if (v.Status == 2)
         {
-            <a id="Ventil1OpenButton" data-toggle="modal" data-target="#ventilVarning" class="btn btn-primary" href="Home/ToggleVentil1 /@v.Id.ToString()">Öppna</a>
+            if (v.Activatable == false)
+            {
+                <a id="Ventil1OpenButton" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Öppna</a>
+            }
 
 
             <img id="Ventil1CloseImg" src="~/Images/VentilSymbol.png" />
@@ -525,7 +528,7 @@
                 <img id="Pipe2ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
             }
 
-            <a id="Ventil4CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
+            <a id="Ventil4CloseButton" class="btn btn-primary" href="Home/ToggleVentil4/@v.Id.ToString()">Stäng</a>
 
         }
 
@@ -542,7 +545,7 @@
                 <img id="Pipe2CloseImg" src="~/Images/Pipe2.png" />
             }
 
-            <a id="Ventil4OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
+            <a id="Ventil4OpenButton" class="btn btn-primary" href="Home/ToggleVentil4/@v.Id.ToString()">Öppna</a>
         }
     }
 
@@ -554,7 +557,7 @@
         {
 
 
-            <a id="Ventil2CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
+            <a id="Ventil2CloseButton" class="btn btn-primary" href="Home/ToggleVentil2/@v.Id.ToString()">Stäng</a>
 
             <img id="Ventil2ActiveImg" src="~/Images/VentilSymbolGreen.png" />
 
@@ -571,7 +574,7 @@
         {
 
 
-            <a id="Ventil2OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
+            <a id="Ventil2OpenButton" class="btn btn-primary" href="Home/ToggleVentil2/@v.Id.ToString()">Öppna</a>
 
             <img id="Ventil2CloseImg" src="~/Images/VentilSymbol.png" />
 
@@ -592,7 +595,7 @@
         {
 
 
-            <a id="Ventil3CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
+            <a id="Ventil3CloseButton" class="btn btn-primary" href="Home/ToggleVentil3/@v.Id.ToString()">Stäng</a>
 
             <img id="Ventil3ActiveImg" src="~/Images/VentilSymbolGreen.png" />
 
@@ -608,7 +611,7 @@
         {
 
 
-            <a id="Ventil3OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
+            <a id="Ventil3OpenButton" class="btn btn-primary" href="Home/ToggleVentil3/@v.Id.ToString()">Öppna</a>
 
             <img id="Ventil3CloseImg" src="~/Images/VentilSymbol.png" />
 
@@ -628,7 +631,7 @@
         {
 
 
-            <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
+            <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/ToggleVentil5/@v.Id.ToString()">Stäng</a>
 
             <img id="Ventil5ActiveImg" src="~/Images/VentilSymbolGreen.png" />
 
@@ -645,7 +648,7 @@
         {
 
 
-            <a id="Ventil5OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
+            <a id="Ventil5OpenButton" class="btn btn-primary" href="Home/ToggleVentil5/@v.Id.ToString()">Öppna</a>
 
             <img id="Ventil5CloseImg" src="~/Images/VentilSymbol.png" />
 
@@ -673,7 +676,7 @@
         {
 
 
-            <a id="Pump1CloseButton" class="btn btn-primary" href="Home/TogglePump/@pu.Id.ToString()">Stäng</a>
+            <a id="Pump1CloseButton" class="btn btn-primary" href="Home/TogglePump1/@pu.Id.ToString()">Stäng</a>
 
             <img id="Pump1OpenImg" src="~/Images/PumpSymbolGreen.png" />
 
@@ -689,8 +692,8 @@
         else if (pu.Status == 2)
         {
 
-
-            <a id="Pump1OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#pumpVarning" href="Home/TogglePump/@pu.Id.ToString()">Öppna</a>
+            //data-toggle="modal" data-target="#pumpVarning" implement later
+            <a id="Pump1OpenButton" class="btn btn-primary" href="Home/TogglePump1/@pu.Id.ToString()">Öppna</a>
 
             <img id="Pump1CloseImg" src="~/Images/PumpSymbol.png" />
 
