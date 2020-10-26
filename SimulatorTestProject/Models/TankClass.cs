@@ -10,6 +10,7 @@ namespace SimulatorTestProject.Models
         public int Id { get; set; }
         public string TankName { get; set; }
         public int Status { get; set; }
+        public bool Activatable { get; set; }
         public string ImageSRCActive { get; set; }
     }
 }
