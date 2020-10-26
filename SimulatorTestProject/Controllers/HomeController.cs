@@ -18,6 +18,8 @@ namespace SimulatorTestProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        MachineClass machineClass = new MachineClass();
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -38,83 +40,39 @@ namespace SimulatorTestProject.Controllers
             return View(all);
         }
 
-        public ActionResult TogglePump(int Id)
+        public ActionResult TogglePump1(int id)
         {
-            AllItemViewModel a = new AllItemViewModel();
-            foreach (PumpClass pu in a.AllItemPump)
-            {
-                if (pu.Id == Id)
-                {
-                    switch (pu.Status)
-                    {
-                        case 1:
-                            pu.Status = 2;
-                            break;
-                        case 2:
-                            pu.Status = 1;
-                            break;
-                    }
-
-                    foreach (PipeClass p in pu.PumpPipeList)
-                    {
-                        switch (p.Status)
-                        {
-                            case 1:
-                                p.Status = 2;
-                                break;
-                            case 2:
-                                p.Status = 1;
-                                break;
-                        }
-                        break;
-                    }
-                    break;
-
-                }
-            }
-
-            string output = JsonConvert.SerializeObject(a.AllItemPump, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
+            machineClass.TogglePump1(id);
             return RedirectToAction("Index");
         }
 
-        public ActionResult ToggleVentil(int Id)
+        public ActionResult ToggleVentil1(int id)
         {
-            AllItemViewModel a = new AllItemViewModel();
-            foreach (VentilClass v in a.AllItemVentil)
-            {
-                if (v.Id == Id)
-                {
-                    switch (v.Status)
-                    {
-                        case 1:
-                            v.Status = 2;
-                            break;
-                        case 2:
-                            v.Status = 1;
-                            break;
-                    }
+            machineClass.ToggleVentil1(id);
+            return RedirectToAction("Index");
+        }
 
-                    foreach (PipeClass p in v.VentilPipeList)
-                    {
-                        switch (p.Status)
-                        {
-                            case 1:
-                                p.Status = 2;
-                                break;
-                            case 2:
-                                p.Status = 1;
-                                break;
-                        }
-                        break;
-                    }
-                    break;
+        public ActionResult ToggleVentil4(int id)
+        {
+            machineClass.ToggleVentil4(id);
+            return RedirectToAction("Index");
+        }
 
-                }
-            }
+        public ActionResult ToggleVentil2(int id)
+        {
+            machineClass.ToggleVentil2(id);
+            return RedirectToAction("Index");
+        }
 
-            string output = JsonConvert.SerializeObject(a.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
+        public ActionResult ToggleVentil3(int id)
+        {
+            machineClass.ToggleVentil3(id);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ToggleVentil5(int id)
+        {
+            machineClass.ToggleVentil5(id);
             return RedirectToAction("Index");
         }
 
