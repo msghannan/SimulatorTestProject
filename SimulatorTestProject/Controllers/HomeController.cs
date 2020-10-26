@@ -40,41 +40,45 @@ namespace SimulatorTestProject.Controllers
 
         public ActionResult TogglePump(int Id)
         {
-            AllItemViewModel a = new AllItemViewModel();
-            foreach (PumpClass pu in a.AllItemPump)
-            {
-                if (pu.Id == Id)
-                {
-                    switch (pu.Status)
-                    {
-                        case 1:
-                            pu.Status = 2;
-                            break;
-                        case 2:
-                            pu.Status = 1;
-                            break;
-                    }
+            //AllItemViewModel a = new AllItemViewModel();
+            //foreach (PumpClass pu in a.AllItemPump)
+            //{
+            //    if (pu.Id == Id)
+            //    {
+            //        switch (pu.Status)
+            //        {
+            //            case 1:
+            //                pu.Status = 2;
+            //                break;
+            //            case 2:
+            //                pu.Status = 1;
+            //                break;
+            //        }
 
-                    foreach (PipeClass p in pu.PumpPipeList)
-                    {
-                        switch (p.Status)
-                        {
-                            case 1:
-                                p.Status = 2;
-                                break;
-                            case 2:
-                                p.Status = 1;
-                                break;
-                        }
-                        break;
-                    }
-                    break;
+            //        foreach (PipeClass p in pu.PumpPipeList)
+            //        {
+            //            switch (p.Status)
+            //            {
+            //                case 1:
+            //                    p.Status = 2;
+            //                    break;
+            //                case 2:
+            //                    p.Status = 1;
+            //                    break;
+            //            }
+            //            break;
+            //        }
+            //        break;
 
-                }
-            }
+            //    }
+            //}
 
-            string output = JsonConvert.SerializeObject(a.AllItemPump, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
+            //string output = JsonConvert.SerializeObject(a.AllItemPump, Newtonsoft.Json.Formatting.Indented);
+            //System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
+
+            MachineClass machineClass = new MachineClass();
+
+            machineClass.TogglePump(Id);
             return RedirectToAction("Index");
         }
 
