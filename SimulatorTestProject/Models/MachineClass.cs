@@ -238,5 +238,17 @@ namespace SimulatorTestProject.ViewModel
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
+
+        private string GetConditions(AllItemViewModel allItemViewModel)
+        {
+            string conditionsFromJson;
+            foreach(PumpClass pu in allItemViewModel.AllItemPump)
+            {
+                if(pu.Conditions != null)
+                {
+                    
+                }
+            }
+        }
     }
 }

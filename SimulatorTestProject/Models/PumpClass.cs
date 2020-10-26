@@ -11,6 +11,7 @@ namespace SimulatorTestProject.Models
         public string PumpName { get; set; }
         public int Status { get; set; }
         public bool Activatable { get; set; }
+        public string Conditions { get; set; }
         public List<PipeClass> PumpPipeList { get; set; }
     }
 }
