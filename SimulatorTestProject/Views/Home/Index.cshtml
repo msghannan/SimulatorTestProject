@@ -438,22 +438,40 @@
 
 
 <div class="Pipe-Map" style="background-color: cornflowerblue ">
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Ventil -->
+    <div class="modal fade" id="ventilVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Varning!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    Du kan inte aktivera ventilen!
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pumpVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Varning!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Du kan inte aktivera pumpen!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -464,7 +482,7 @@
         if (v.Status == 1)
         {
 
-            <a id="Ventil1CloseButton" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
+            <a id="Ventil1CloseButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Stäng</a>
 
             <img id="Ventil1ActiveImg" src="~/Images/VentilSymbolGreen.png" />
 
@@ -477,7 +495,7 @@
 
         else if (v.Status == 2)
         {
-            <a id="Ventil1OpenButton" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
+            <a id="Ventil1OpenButton" data-toggle="modal" data-target="#ventilVarning" class="btn btn-primary" href="Home/ToggleVentil/@v.Id.ToString()">Öppna</a>
 
 
             <img id="Ventil1CloseImg" src="~/Images/VentilSymbol.png" />
@@ -672,7 +690,7 @@
         {
 
 
-            <a id="Pump1OpenButton" class="btn btn-primary" href="Home/TogglePump/@pu.Id.ToString()">Öppna</a>
+            <a id="Pump1OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#pumpVarning" href="Home/TogglePump/@pu.Id.ToString()">Öppna</a>
 
             <img id="Pump1CloseImg" src="~/Images/PumpSymbol.png" />
 
