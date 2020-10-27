@@ -2,6 +2,7 @@
 using SimulatorTestProject.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,35 +14,49 @@ namespace SimulatorTestProject.ViewModel
 
         public void TogglePump1(int id)
         {
-            foreach (PumpClass pu in allItemViewModel.AllItemPump)
+            foreach (VentilClass v in allItemViewModel.AllItemVentil)
             {
-                if (pu.Id == id)
+                foreach (PipeClass pi in v.VentilPipeList.Where(p => p.Id == 5))
                 {
-                    switch (pu.Status)
+                    foreach (PumpClass pu in allItemViewModel.AllItemPump)
                     {
-                        case 1:
-                            pu.Status = 2;
-                            break;
-                        case 2:
-                            pu.Status = 1;
-                            break;
-                    }
-
-                    foreach (PipeClass p in pu.PumpPipeList)
-                    {
-                        switch (p.Status)
+                        if (pu.Id == id && pi.Status == 1)
                         {
-                            case 1:
-                                p.Status = 2;
-                                break;
-                            case 2:
-                                p.Status = 1;
-                                break;
-                        }
-                        break;
-                    }
-                    break;
+                            pu.Activatable = true;
 
+                            switch (pu.Status)
+                            {
+                                case 1:
+                                    pu.Status = 2;
+                                    break;
+                                case 2:
+                                    pu.Status = 1;
+                                    break;
+                            }
+
+                            foreach (PipeClass p in pu.PumpPipeList)
+                            {
+                                switch (p.Status)
+                                {
+                                    case 1:
+                                        p.Status = 2;
+                                        break;
+                                    case 2:
+                                        p.Status = 1;
+                                        break;
+                                }
+                                break;
+                            }
+                            break;
+
+                        }
+
+                        else
+                        {
+                            pu.Activatable = false;
+                            pu.Status = 2;
+                        }
+                    }
                 }
             }
 
@@ -241,14 +256,15 @@ namespace SimulatorTestProject.ViewModel
 
         private string GetConditions(AllItemViewModel allItemViewModel)
         {
-            string conditionsFromJson;
-            foreach(PumpClass pu in allItemViewModel.AllItemPump)
+            string conditionsFromJson = null;
+            foreach (PumpClass pu in allItemViewModel.AllItemPump)
             {
-                if(pu.Conditions != null)
+                if (pu.Conditions != null)
                 {
-                    
+                    conditionsFromJson = pu.Conditions;
                 }
             }
+            return conditionsFromJson;
         }
     }
 }
