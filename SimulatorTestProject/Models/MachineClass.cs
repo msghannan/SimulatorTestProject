@@ -2,6 +2,7 @@
 using SimulatorTestProject.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -117,7 +118,22 @@ namespace SimulatorTestProject.ViewModel
                             v.Status = 1;
                             break;
                     }
-
+                    foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(v => v.Id == 5))
+                    {
+                        switch (vc.Activatable)
+                        {
+                            case false:
+                                vc.Activatable = true;
+                                break;
+                            case true:
+                                vc.Activatable = false;
+                                break;
+                        }
+                        if(v.Status == 2)
+                        {
+                            vc.Status = 2;
+                        }
+                    }
                     foreach (PipeClass p in v.VentilPipeList)
                     {
                         switch (p.Status)
@@ -219,34 +235,52 @@ namespace SimulatorTestProject.ViewModel
         public void ToggleVentil5(int id)
         {
             foreach (VentilClass v in allItemViewModel.AllItemVentil)
-            {
-                if (v.Id == id)
-                {
-                    switch (v.Status)
+            {                
+                    if (v.Id == id)
                     {
-                        case 1:
-                            v.Status = 2;
-                            break;
-                        case 2:
-                            v.Status = 1;
-                            break;
-                    }
-
-                    foreach (PipeClass p in v.VentilPipeList)
+                    foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(v => v.Id == 4))
                     {
-                        switch (p.Status)
+                        if (vc.Status == 1)
                         {
-                            case 1:
-                                p.Status = 2;
-                                break;
-                            case 2:
-                                p.Status = 1;
-                                break;
+                            switch (v.Status)
+                            {
+                                case 1:
+                                    v.Status = 2;
+                                    break;
+                                case 2:
+                                    v.Status = 1;
+                                    break;
+                            }
                         }
-                        break;
-                    }
-                    break;
+                        else
+                        {
+                            switch (v.Status)
+                            {
+                                case 1:
+                                    v.Status = 2;
+                                    break;
+                                case 2:
+                                    v.Status = 1;
+                                    break;
+                            }
+                            foreach(PipeClass p in v.VentilPipeList)
+                        {
+                                switch (p.Status)
+                                {
+                                    case 1:
+                                        p.Status = 2;
+                                        break;
+                                    case 2:
+                                        p.Status = 1;
+                                        break;
+                                }
+                                break;
+                            }
+                            break;
+                        }
+                        
 
+                    }
                 }
             }
 

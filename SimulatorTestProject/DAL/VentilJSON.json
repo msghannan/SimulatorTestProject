@@ -45,10 +45,10 @@
     "Id": 4,
     "VentilName": "Ventil4",
     "Status": 2,
-    "Activatable": false,
+    "Activatable": true,
     "VentilPipeList": [
       {
-        "Id": 7,
+        "Id": 4,
         "PipeName": "Pipe2Active",
         "Status": 2,
         "ImageSRCActive": "~/Images/Pipe2Green.png"
