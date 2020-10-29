@@ -287,7 +287,28 @@ namespace SimulatorTestProject.ViewModel
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
-
+        public void EmptyTank()
+        {
+            foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 4))
+            {
+                vc.Activatable = false;
+            }
+            foreach (VentilClass v in allItemViewModel.AllItemVentil.Where(v => v.Id == 5))
+            {
+                v.Activatable = true;
+            }
+                string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
+                System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
+        }
+        public void FillTank()
+        {
+            foreach(VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 1))
+            {
+                vc.Activatable = true;
+            }
+            string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
+            System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
+        }
         private string GetConditions(AllItemViewModel allItemViewModel)
         {
             string conditionsFromJson = null;
