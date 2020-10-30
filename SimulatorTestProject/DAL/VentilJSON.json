@@ -8,7 +8,7 @@
       {
         "Id": 1,
         "PipeName": "Pipe1Active",
-        "Status": 1,
+        "Status": 2,
         "ImageSRCActive": "~/Images/Pipe1Green.png"
       }
     ]

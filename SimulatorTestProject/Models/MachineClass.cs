@@ -73,7 +73,22 @@ namespace SimulatorTestProject.ViewModel
                 {
                     foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 4))
                     {
-                        if (v.Id == id && t.Fill == false)
+                        if (v.Id == id && t.Fill == true)
+                        {
+                            v.Activatable = true;
+
+                            switch (v.Status)
+                            {
+                                case 1:
+                                    v.Status = 2;
+                                    break;
+                                case 2:
+                                    v.Status = 1;
+                                    break;
+                            }
+                        }
+
+                        else if (v.Id == id && t.Fill == false)
                         {
                             v.Activatable = true;
                             vc.Activatable = true;
@@ -101,21 +116,6 @@ namespace SimulatorTestProject.ViewModel
                                 break;
                             }
                             
-                        }
-
-                        else if(v.Id == id && t.Fill == true)
-                        {
-                            v.Activatable = true;
-
-                            switch (v.Status)
-                            {
-                                case 1:
-                                    v.Status = 2;
-                                    break;
-                                case 2:
-                                    v.Status = 1;
-                                    break;
-                            }
                         }
 
                         break;
