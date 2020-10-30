@@ -2,7 +2,7 @@
   {
     "Id": 1,
     "VentilName": "Ventil1",
-    "Status": 2,
+    "Status": 1,
     "Activatable": true,
     "VentilPipeList": [
       {
@@ -16,13 +16,13 @@
   {
     "Id": 2,
     "VentilName": "Ventil2",
-    "Status": 2,
+    "Status": 1,
     "Activatable": true,
     "VentilPipeList": [
       {
         "Id": 3,
         "PipeName": "Pipe6Active",
-        "Status": 2,
+        "Status": 1,
         "ImageSRCActive": "~/Images/Pipe6Green.png"
       }
     ]
@@ -30,13 +30,13 @@
   {
     "Id": 3,
     "VentilName": "Ventil3",
-    "Status": 2,
+    "Status": 1,
     "Activatable": true,
     "VentilPipeList": [
       {
         "Id": 5,
         "PipeName": "Pipe4Active",
-        "Status": 2,
+        "Status": 1,
         "ImageSRCActive": "~/Images/Pipe4Green.png"
       }
     ]
@@ -58,13 +58,13 @@
   {
     "Id": 5,
     "VentilName": "Ventil5",
-    "Status": 2,
+    "Status": 1,
     "Activatable": true,
     "VentilPipeList": [
       {
         "Id": 9,
         "PipeName": "Pipe3Active",
-        "Status": 2,
+        "Status": 1,
         "ImageSRCActive": "~/Images/Pipe3Green.png"
       }
     ]
