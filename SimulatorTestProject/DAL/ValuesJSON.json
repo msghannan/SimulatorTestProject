@@ -1,0 +1,47 @@
+[
+  {
+    "Id": 1,
+    "VentilValuesFromJson": [
+      {
+        "Id": 1,
+        "VentilName": "Ventil1",
+        "Status": 2,
+        "Activatable": false
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "PipeValuesFromJson": [
+      {
+        "Id": 1,
+        "PipeName": "Pipe1Active",
+        "Status": 2,
+        "ImageSRCActive": "~/Images/Pipe1Green.png"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "PumpValuesFromJson": [
+      {
+        "Id": 1,
+        "VentilName": "Ventil1",
+        "Status": 2,
+        "Activatable": false
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "TankValuesFromJson": [
+      {
+        "Id": 1,
+        "TankName": "Tank1",
+        "Status": 1,
+        "Activatable": false,
+        "ImageSRCActive": ""
+      }
+    ]
+  }
+]

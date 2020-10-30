@@ -75,9 +75,9 @@ namespace SimulatorTestProject.Controllers
             machineClass.ToggleVentil5(id);
             return RedirectToAction("Index");
         }
-        public ActionResult EmptyTank()
+        public ActionResult EmptyTank(int id)
         {
-            machineClass.EmptyTank();
+            machineClass.EmptyTank(id);
             return RedirectToAction("Index");
         }
         public ActionResult TogglePipe(int Id)

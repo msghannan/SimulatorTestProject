@@ -125,7 +125,20 @@
         </div>
     </div>
 
-    <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/EmptyTank">Tömning</a>
+
+    @foreach (var t in Model.AllItemTank.Where(t => t.Id == 1))
+    {
+        if (t.Fill == true)
+        {
+            <a id="EmptyButton" class="btn btn-primary" href="Home/EmptyTank/@t.Id.ToString()">Stoppa tömning</a>
+        }
+
+        else
+        {
+            <a id="EmptyButton" class="btn btn-primary" href="Home/EmptyTank/@t.Id.ToString()">Tömning</a>
+        }
+    }
+
 
     @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 1))
     {
@@ -146,6 +159,7 @@
         {
             if (v.Activatable == false)
             {
+
                 <a id="Ventil1OpenButton" data-toggle="modal" data-target="#ventilVarning" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Öppna</a>
             }
 
