@@ -15,9 +15,9 @@ namespace SimulatorTestProject.ViewModel
 
         public void TogglePump1(int id)
         {
-            foreach (VentilClass v in allItemViewModel.AllItemVentil)
+            foreach (VentilClass v in allItemViewModel.AllItemVentil.Where(v => v.Id == 3))
             {
-                foreach (PipeClass pi in v.VentilPipeList.Where(p => p.Id == 5))
+                foreach (PipeClass pi in v.VentilPipeList.Where(pi => pi.Id == 5))
                 {
                     foreach (PumpClass pu in allItemViewModel.AllItemPump)
                     {
@@ -132,36 +132,44 @@ namespace SimulatorTestProject.ViewModel
             {
                 foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 5))
                 {
-                    if (v.Id == id)
+                    foreach (PipeClass pi in vc.VentilPipeList.Where(pi => pi.Id == 9))
                     {
-                        switch (v.Status)
+
+                        if (v.Id == id && pi.Status == 2)
                         {
-                            case 1:
-                                v.Status = 2;
-                                break;
-                            case 2:
-                                v.Status = 1;
-                                break;
-                        }
+                            switch (v.Status)
+                            {
+                                case 1:
+                                    v.Status = 2;
+                                    break;
+                                case 2:
+                                    v.Status = 1;
+                                    break;
+                            }
                             if (v.Status == 2)
                             {
                                 vc.Status = 2;
-                            }
-                        foreach (PipeClass p in v.VentilPipeList)
-                        {
-                            switch (p.Status)
-                            {
-                                case 1:
+                                foreach (PipeClass p in vc.VentilPipeList.Where(p => p.Id == 9))
+                                {
                                     p.Status = 2;
-                                    break;
-                                case 2:
-                                    p.Status = 1;
-                                    break;
+                                }
+                            }
+                            foreach (PipeClass p in v.VentilPipeList)
+                            {
+                                switch (p.Status)
+                                {
+                                    case 1:
+                                        p.Status = 2;
+                                        break;
+                                    case 2:
+                                        p.Status = 1;
+                                        break;
+                                }
+                                break;
                             }
                             break;
-                        }
-                        break;
 
+                        }
                     }
                 }
             }
@@ -210,37 +218,39 @@ namespace SimulatorTestProject.ViewModel
 
         public void ToggleVentil3(int id)
         {
-            foreach (VentilClass v in allItemViewModel.AllItemVentil)
-            {
-                if (v.Id == id)
+                foreach (VentilClass v in allItemViewModel.AllItemVentil)
                 {
-                    switch (v.Status)
+                    if (v.Id == id)
                     {
-                        case 1:
-                            v.Status = 2;
-                            break;
-                        case 2:
-                            v.Status = 1;
-                            break;
-                    }
-
-                    foreach (PipeClass p in v.VentilPipeList)
-                    {
-                        switch (p.Status)
+                        switch (v.Status)
                         {
                             case 1:
-                                p.Status = 2;
+                                v.Status = 2;
+                            ChangePump1ActivatableToFalse();
                                 break;
                             case 2:
-                                p.Status = 1;
+                                v.Status = 1;
+                            ChangePump1ActivatableToTrue();
                                 break;
                         }
-                        break;
-                    }
-                    break;
 
+                        foreach (PipeClass p in v.VentilPipeList)
+                        {
+                            switch (p.Status)
+                            {
+                                case 1:
+                                    p.Status = 2;
+                                    break;
+                                case 2:
+                                    p.Status = 1;
+                                    break;
+                            }
+                            break;
+                        }
+                        break;
+
+                    }
                 }
-            }
 
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
@@ -302,6 +312,36 @@ namespace SimulatorTestProject.ViewModel
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
+        
+        public void ChangePump1ActivatableToFalse()
+        {
+            foreach (PumpClass pu in allItemViewModel.AllItemPump.Where(pu => pu.Id == 1))
+            {
+                pu.Activatable = false;
+            }
+
+            string output = JsonConvert.SerializeObject(allItemViewModel.AllItemPump, Newtonsoft.Json.Formatting.Indented);
+            System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
+        }
+
+        public void ChangePump1ActivatableToTrue()
+        {
+            foreach(VentilClass v in allItemViewModel.AllItemVentil.Where(v => v.Id == 3))
+            foreach (PumpClass pu in allItemViewModel.AllItemPump.Where(pu => pu.Id == 1))
+            {
+                pu.Activatable = true;
+            }
+
+            string output = JsonConvert.SerializeObject(allItemViewModel.AllItemPump, Newtonsoft.Json.Formatting.Indented);
+            System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
+        }
+
+
+
+
+
+
+
         //public void EmptyTank(int id)
         //{
         //    foreach(TankClass t in allItemViewModel.AllItemTank)
