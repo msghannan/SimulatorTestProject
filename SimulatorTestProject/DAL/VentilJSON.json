@@ -3,7 +3,7 @@
     "Id": 1,
     "VentilName": "Ventil1",
     "Status": 2,
-    "Activatable": true,
+    "Activatable": false,
     "VentilPipeList": [
       {
         "Id": 1,
@@ -45,7 +45,7 @@
     "Id": 4,
     "VentilName": "Ventil4",
     "Status": 2,
-    "Activatable": true,
+    "Activatable": false,
     "VentilPipeList": [
       {
         "Id": 4,
