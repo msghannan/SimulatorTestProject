@@ -73,7 +73,22 @@ namespace SimulatorTestProject.ViewModel
                 {
                     foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 4))
                     {
-                        if (v.Id == id && t.Fill == false)
+                        if (v.Id == id && t.Fill == true)
+                        {
+                            v.Activatable = true;
+
+                            switch (v.Status)
+                            {
+                                case 1:
+                                    v.Status = 2;
+                                    break;
+                                case 2:
+                                    v.Status = 1;
+                                    break;
+                            }
+                        }
+
+                        else if (v.Id == id && t.Fill == false)
                         {
                             v.Activatable = true;
                             vc.Activatable = true;
@@ -100,22 +115,7 @@ namespace SimulatorTestProject.ViewModel
                                 }
                                 break;
                             }
-
-                        }
-
-                        else if (v.Id == id && t.Fill == true)
-                        {
-                            v.Activatable = true;
-
-                            switch (v.Status)
-                            {
-                                case 1:
-                                    v.Status = 2;
-                                    break;
-                                case 2:
-                                    v.Status = 1;
-                                    break;
-                            }
+                            
                         }
 
                         break;
@@ -146,10 +146,10 @@ namespace SimulatorTestProject.ViewModel
                                 v.Status = 1;
                                 break;
                         }
-                        if (v.Status == 2)
-                        {
-                            vc.Status = 2;
-                        }
+                            if (v.Status == 2)
+                            {
+                                vc.Status = 2;
+                            }
                         foreach (PipeClass p in v.VentilPipeList)
                         {
                             switch (p.Status)
@@ -252,9 +252,9 @@ namespace SimulatorTestProject.ViewModel
         public void ToggleVentil5(int id)
         {
             foreach (VentilClass v in allItemViewModel.AllItemVentil)
-            {
-                if (v.Id == id)
-                {
+            {                
+                    if (v.Id == id)
+                    {
                     foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(v => v.Id == 4))
                     {
                         if (vc.Status == 1)
@@ -281,12 +281,12 @@ namespace SimulatorTestProject.ViewModel
                                     break;
                             }
 
-                            foreach (VentilClass vc2 in allItemViewModel.AllItemVentil.Where(v => v.Id == 3))
+                            foreach(VentilClass vc2 in allItemViewModel.AllItemVentil.Where(v => v.Id == 3))
                             {
                                 vc2.Activatable = true;
                             }
-                            foreach (PipeClass p in v.VentilPipeList)
-                            {
+                            foreach(PipeClass p in v.VentilPipeList)
+                        {
                                 switch (p.Status)
                                 {
                                     case 1:
@@ -300,7 +300,7 @@ namespace SimulatorTestProject.ViewModel
                             }
                             break;
                         }
-
+                        
 
                     }
                 }
@@ -311,7 +311,7 @@ namespace SimulatorTestProject.ViewModel
         }
         public void EmptyTank(int id)
         {
-            foreach (TankClass t in allItemViewModel.AllItemTank)
+            foreach(TankClass t in allItemViewModel.AllItemTank)
             {
                 if (t.Id == id)
                 {
@@ -336,7 +336,7 @@ namespace SimulatorTestProject.ViewModel
         }
         public void FillTank()
         {
-            foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 1))
+            foreach(VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 1))
             {
                 vc.Activatable = true;
             }
@@ -358,7 +358,7 @@ namespace SimulatorTestProject.ViewModel
 
         public void EmptyFunctionON()
         {
-            foreach (TankClass t in allItemViewModel.AllItemTank)
+            foreach(TankClass t in allItemViewModel.AllItemTank)
             {
                 foreach (VentilClass v in allItemViewModel.AllItemVentil.Where(v => v.Id == 4))
                 {
@@ -369,11 +369,17 @@ namespace SimulatorTestProject.ViewModel
                             v.Activatable = false;
                             vc.Activatable = true;
                         }
-                        //else
-                        //{
-                        //    v.Activatable = true;
-                        //    vc.Activatable = false;
-                        //}
+                        else if(t.Fill == false)
+                        {
+                            v.Activatable = true;
+                            vc.Activatable = false;
+                            vc.Status = 2;
+                            foreach (VentilClass vcc in allItemViewModel.AllItemVentil.Where(vcc => vcc.Id == 1))
+                            {
+                                vcc.Activatable = true;
+                            }
+
+                        }
                     }
                 }
             }
