@@ -8,7 +8,7 @@
       {
         "Id": 1,
         "PipeName": "Pipe1Active",
-        "Status": 2,
+        "Status": 1,
         "ImageSRCActive": "~/Images/Pipe1Green.png"
       }
     ]
@@ -64,7 +64,7 @@
       {
         "Id": 9,
         "PipeName": "Pipe3Active",
-        "Status": 2,
+        "Status": 1,
         "ImageSRCActive": "~/Images/Pipe3Green.png"
       }
     ]

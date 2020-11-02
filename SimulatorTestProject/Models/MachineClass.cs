@@ -369,10 +369,11 @@ namespace SimulatorTestProject.ViewModel
                             v.Activatable = false;
                             vc.Activatable = true;
                         }
-                        else
+                        else if(t.Fill == false)
                         {
                             v.Activatable = true;
                             vc.Activatable = false;
+                            vc.Status = 2;
                             foreach (VentilClass vcc in allItemViewModel.AllItemVentil.Where(vcc => vcc.Id == 1))
                             {
                                 vcc.Activatable = true;
