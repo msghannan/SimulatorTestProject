@@ -317,3 +317,10 @@
     margin-left: 50px;
     margin-top: 110px
 }
+#FillButton {
+    height: auto;
+    width: 80px;
+    font-size: 15px;
+    margin-left: 300px;
+    margin-top: 110px
+}
