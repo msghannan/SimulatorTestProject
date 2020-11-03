@@ -124,25 +124,83 @@
             </div>
         </div>
     </div>
+    <!-- Modal Knapp Tömning/Fyllning -->
+    <div class="modal fade" id="KnappVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Varning!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Går ej att aktivera!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @foreach (var t in Model.AllItemTank.Where(t => t.Id == 1))
     {
-        if (t.ReadyForEmpty == true)
-        {
-            <a id="EmptyButton" class="btn btn-primary" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Stoppa tömning</a>
-        }
-        else if (t.ReadyForEmpty == false)
+        if (t.ReadyForEmpty == false && t.ReadyForFill == false)
         {
             <a id="EmptyButton" class="btn btn-primary" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Töm Tanken</a>
         }
-        if (t.ReadyForFill == true)
+
+        else if (t.ReadyForEmpty == true && t.ReadyForFill == false)
         {
-            <a id="FillButton" class="btn btn-primary" href="Home/ReadyForFillMethod/@t.Id.ToString()">Stoppa påfyllning</a>
+            <a id="EmptyButton" class="btn btn-primary" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Stoppa tömning</a>
         }
-        else if (t.ReadyForFill == false)
+        else if (t.ReadyForFill == true)
+        {
+            <a id="FillButton" class="btn btn-primary" data-toggle="modal" data-target="#KnappVarning" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Töm Tanken</a>
+        }
+
+
+
+
+
+
+
+        if (t.ReadyForFill == false && t.ReadyForEmpty == false)
         {
             <a id="FillButton" class="btn btn-primary" href="Home/ReadyForFillMethod/@t.Id.ToString()">Fyll Tanken</a>
         }
+        else if (t.ReadyForFill == true && t.ReadyForEmpty == false)
+        {
+            <a id="FillButton" class="btn btn-primary" href="Home/ReadyForFillMethod/@t.Id.ToString()">Stoppa påfyllning</a>
+        }
+        else if (t.ReadyForEmpty == true)
+        {
+            <a id="FillButton" class="btn btn-primary" data-toggle="modal" data-target="#KnappVarning" href="Home/ReadyForFillMethod/@t.Id.ToString()">Fyll Tanken</a>
+
+        }
+
+
+        @*else if (t.ReadyForEmpty == false)
+            {
+                <a id="EmptyButton" class="btn btn-primary" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Töm Tanken</a>
+            }
+            else if (t.ReadyForEmpty == false && t.ReadyForFill == true)
+            {
+                <a id="FillButton" class="btn btn-primary" data-toggle="modal" data-target="#KnappVarning" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Fyll Tanken</a>
+            }
+            if (t.ReadyForFill == true)
+            {
+                <a id="FillButton" class="btn btn-primary" href="Home/ReadyForFillMethod/@t.Id.ToString()">Stoppa påfyllning</a>
+            }
+            else if (t.ReadyForFill == false)
+            {
+                <a id="FillButton" class="btn btn-primary" href="Home/ReadyForFillMethod/@t.Id.ToString()">Fyll Tanken</a>
+            }
+            else if (t.ReadyForFill == false && t.ReadyForEmpty == true)
+            {
+                <a id="FillButton" class="btn btn-primary" data-toggle="modal" data-target="#KnappVarning" href="Home/ReadyForFillMethod/@t.Id.ToString()">Fyll Tanken</a>
+            }*@
     }
 
 

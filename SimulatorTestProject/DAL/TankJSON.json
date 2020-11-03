@@ -3,7 +3,7 @@
     "Id": 1,
     "TankName": null,
     "Status": 2,
-    "ReadyForFill": true,
+    "ReadyForFill": false,
     "ReadyForEmpty": false,
     "FillTank": false,
     "EmptyTank": false,
