@@ -1,12 +1,12 @@
 [
   {
     "Id": 1,
-    "TankName": "Tank1",
+    "TankName": null,
     "Status": 2,
-    "ReadyForFill": false,
-    "ReadyForEmpty": true,
+    "ReadyForFill": true,
+    "ReadyForEmpty": false,
     "FillTank": false,
     "EmptyTank": false,
-    "ImageSRCActive": ""
+    "ImageSRCActive": null
   }
 ]

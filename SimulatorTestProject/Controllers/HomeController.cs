@@ -80,6 +80,16 @@ namespace SimulatorTestProject.Controllers
             machineClass.ReadyForEmptyMethod(id);
             return RedirectToAction("Index");
         }
+        //public ActionResult EmptyTank(int id)
+        //{
+        //    machineClass.EmptyTank(id);
+        //    return RedirectToAction("Index");
+        //}
+        public ActionResult ReadyForFillMethod(int id)
+        {
+            machineClass.ReadyForFillMethod(id);
+            return RedirectToAction("Index");
+        }
         public ActionResult TogglePipe(int Id)
         {
             AllItemViewModel a = new AllItemViewModel();
