@@ -3,7 +3,10 @@
     "Id": 1,
     "TankName": "Tank1",
     "Status": 2,
-    "Fill": false,
+    "ReadyForFill": false,
+    "ReadyForEmpty": true,
+    "FillTank": false,
+    "EmptyTank": false,
     "ImageSRCActive": ""
   }
 ]
