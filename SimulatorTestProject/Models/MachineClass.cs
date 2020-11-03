@@ -337,14 +337,12 @@ namespace SimulatorTestProject.ViewModel
             System.IO.File.WriteAllText("DAL/TankJSON.json", output);
         }
 
-    }
-        }
         public void ReadyForFillMethod(int id)
         {
             foreach (TankClass t in allItemViewModel.AllItemTank)
             {
                 foreach (VentilClass v in allItemViewModel.AllItemVentil.Where(v => v.Id == 1 || v.Id == 4 || v.Id == 5))
-                    {
+                {
                     foreach (PipeClass p in v.VentilPipeList)
                     {
                         if (t.Id == id)
@@ -370,7 +368,7 @@ namespace SimulatorTestProject.ViewModel
         }
         public void EnableReadyToFill()
         {
-            foreach(TankClass t in allItemViewModel.AllItemTank)
+            foreach (TankClass t in allItemViewModel.AllItemTank)
             {
                 t.ReadyForEmpty = false;
                 t.ReadyForFill = true;
@@ -378,5 +376,7 @@ namespace SimulatorTestProject.ViewModel
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemTank, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/TankJSON.json", output);
         }
-    } 
+    }
+
 }
+      
