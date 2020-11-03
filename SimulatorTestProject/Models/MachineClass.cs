@@ -73,7 +73,7 @@ namespace SimulatorTestProject.ViewModel
                 {
                     foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 4))
                     {
-                        if (v.Id == id && t.Fill == true)
+                        if (v.Id == id)
                         {
                             v.Activatable = true;
 
@@ -87,21 +87,6 @@ namespace SimulatorTestProject.ViewModel
                                     break;
                             }
                         }
-
-                        else if (v.Id == id && t.Fill == false)
-                        {
-                            v.Activatable = true;
-                            vc.Activatable = true;
-                            switch (v.Status)
-                            {
-                                case 1:
-                                    v.Status = 2;
-                                    break;
-                                case 2:
-                                    v.Status = 1;
-                                    break;
-                            }
-
                             foreach (PipeClass p in v.VentilPipeList)
                             {
                                 switch (p.Status)
@@ -122,7 +107,6 @@ namespace SimulatorTestProject.ViewModel
 
                     }
                 }
-            }
 
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
@@ -308,83 +292,7 @@ namespace SimulatorTestProject.ViewModel
 
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
-        }
-        public void EmptyTank(int id)
-        {
-            foreach(TankClass t in allItemViewModel.AllItemTank)
-            {
-                if (t.Id == id)
-                {
-                    switch (t.Fill)
-                    {
-                        case true:
-                            t.Fill = false;
-                            break;
-                        case false:
-                            t.Fill = true;
-                            break;
-                    }
+        }       
 
-                    EmptyFunctionON();
-
-                }
-
-            }
-
-            string output = JsonConvert.SerializeObject(allItemViewModel.AllItemTank, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText("DAL/TankJSON.json", output);
-        }
-        public void FillTank()
-        {
-            foreach(VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 1))
-            {
-                vc.Activatable = true;
-            }
-            string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
-        }
-        private string GetConditions(AllItemViewModel allItemViewModel)
-        {
-            string conditionsFromJson = null;
-            foreach (PumpClass pu in allItemViewModel.AllItemPump)
-            {
-                if (pu.Conditions != null)
-                {
-                    conditionsFromJson = pu.Conditions;
-                }
-            }
-            return conditionsFromJson;
-        }
-
-        public void EmptyFunctionON()
-        {
-            foreach(TankClass t in allItemViewModel.AllItemTank)
-            {
-                foreach (VentilClass v in allItemViewModel.AllItemVentil.Where(v => v.Id == 4))
-                {
-                    foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id != 4))
-                    {
-                        if (t.Fill == true)
-                        {
-                            v.Activatable = false;
-                            vc.Activatable = true;
-                        }
-                        else
-                        {
-                            v.Activatable = true;
-                            vc.Activatable = false;
-                            foreach (VentilClass vcc in allItemViewModel.AllItemVentil.Where(vcc => vcc.Id == 1))
-                            {
-                                vcc.Activatable = true;
-                            }
-
-                        }
-                    }
-                }
-            }
-
-            string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
-        }
     }
 }

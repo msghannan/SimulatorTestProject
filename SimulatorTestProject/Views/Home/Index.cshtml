@@ -128,18 +128,18 @@
 
         @foreach (var t in Model.AllItemTank.Where(t => t.Id == 1))
         {
-            if (t.Fill == true)
+            if (t.ReadyForEmpty == true)
             {
                 <a id="EmptyButton" class="btn btn-primary" href="Home/EmptyTank/@t.Id.ToString()">Stoppa tömning</a>
-            }
 
-            else
+            }
+            else if (t.ReadyForEmpty == false)
             {
                 <a id="EmptyButton" class="btn btn-primary" href="Home/EmptyTank/@t.Id.ToString()">Tömning</a>
+                }
             }
-        }
 
-
+        
         @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 1))
         {
             foreach (var pi in v.VentilPipeList)
