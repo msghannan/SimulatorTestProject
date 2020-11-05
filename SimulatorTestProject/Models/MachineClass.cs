@@ -434,16 +434,20 @@ namespace SimulatorTestProject.ViewModel
 
         public void FillTankSetting()
         {
-                {
-                    if(v.Id == 1 || v.Id == 4 || v.Id == 5)
+            int numberOfOperationalValves = 0;
+            foreach (TankClass t in allItemViewModel.AllItemTank)
+            {
+                foreach (VentilClass v in allItemViewModel.AllItemVentil)
+            {
+                    if (v.Id == 1 || v.Id == 4 || v.Id == 5)
                     {
-                        if(v.Status == 1)
+                        if (v.Status == 1)
                         {
                             numberOfOperationalValves++;
                         }
                     }
                 }
-                if(numberOfOperationalValves == 3)
+                if (numberOfOperationalValves == 3)
                 {
                     t.FillTank = true;
                 }
@@ -452,6 +456,7 @@ namespace SimulatorTestProject.ViewModel
                     t.FillTank = false;
                 }
             }
+            
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemTank, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/TankJSON.json", output);
         }
