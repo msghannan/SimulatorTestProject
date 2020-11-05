@@ -470,6 +470,7 @@ namespace SimulatorTestProject.ViewModel
         public void EmptyTankSetting()
         {
             int numberOfOperationalValves = 0;
+            int numberOfOperationalPumps = 0;
             foreach (TankClass t in allItemViewModel.AllItemTank)
             {
                 foreach (PumpClass p in allItemViewModel.AllItemPump)
@@ -482,9 +483,13 @@ namespace SimulatorTestProject.ViewModel
                             {
                                 numberOfOperationalValves++;
                             }
+                            else if (p.Status == 1)
+                            {
+                                numberOfOperationalPumps++;
+                            }
                         }
                     }
-                    if (numberOfOperationalValves == 4)
+                    if (numberOfOperationalValves == 4 && numberOfOperationalPumps == 1)
                     {
                         t.EmptyTank = true;
                     }

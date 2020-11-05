@@ -3,7 +3,7 @@
     "Id": 1,
     "PumpName": "Pump1",
     "Status": 2,
-    "Activatable": false,
+    "Activatable": true,
     "PumpPipeList": [
       {
         "Id": 1,
