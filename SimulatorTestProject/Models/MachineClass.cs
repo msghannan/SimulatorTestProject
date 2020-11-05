@@ -116,7 +116,7 @@ namespace SimulatorTestProject.ViewModel
                 }
             }
 
-            FillTankSeeting();
+            FillTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
@@ -125,38 +125,41 @@ namespace SimulatorTestProject.ViewModel
         {
             foreach (VentilClass v in allItemViewModel.AllItemVentil)
             {
+                foreach(TankClass t in allItemViewModel.AllItemTank)
                 {
-                    if (v.Id == id)
                     {
-                        switch (v.Status)
+                        if (v.Id == id)
                         {
-                            case 1:
-                                v.Status = 2;
-                                break;
-                            case 2:
-                                v.Status = 1;
-                                break;
-                        }
-                        foreach (PipeClass p in v.VentilPipeList)
-                        {
-                            switch (p.Status)
+                            switch (v.Status)
                             {
                                 case 1:
-                                    p.Status = 2;
+                                    v.Status = 2;
                                     break;
                                 case 2:
-                                    p.Status = 1;
+                                    v.Status = 1;
                                     break;
                             }
+                            foreach (PipeClass p in v.VentilPipeList)
+                            {
+                                switch (p.Status)
+                                {
+                                    case 1:
+                                        p.Status = 2;
+                                        break;
+                                    case 2:
+                                        p.Status = 1;
+                                        break;
+                                }
+                                break;
+                            }
                             break;
-                        }
-                        break;
 
+                        }
                     }
 
                 }
             }
-            FillTankSeeting();
+            FillTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
@@ -291,7 +294,7 @@ namespace SimulatorTestProject.ViewModel
                     }
                 }
             }
-            FillTankSeeting();
+            FillTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
@@ -315,7 +318,7 @@ namespace SimulatorTestProject.ViewModel
                                 case true:
                                     v.Activatable = false;
                                     DisableReadyToEmpty();
-                                    DisablelePump();
+                                    DisablePump();
                                     v.Status = 2;
                                     p.Status = 2;
                                     break;
@@ -386,7 +389,7 @@ namespace SimulatorTestProject.ViewModel
             {
                 t.ReadyForFill = true;
             }
-            FillTankSeeting();
+            FillTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemTank, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/TankJSON.json", output);
         }
@@ -412,7 +415,7 @@ namespace SimulatorTestProject.ViewModel
             System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
         }
 
-        public void DisablelePump()
+        public void DisablePump()
         {
             foreach (PumpClass pu in allItemViewModel.AllItemPump.Where(pu => pu.Id == 1))
             {
@@ -429,32 +432,59 @@ namespace SimulatorTestProject.ViewModel
             System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
         }
 
-        public void FillTankSeeting()
+        public void FillTankSetting()
         {
-            var a = allItemViewModel.AllItemVentil.Where(v => v.Id == 1 && v.Id == 4);
-            foreach (TankClass t in allItemViewModel.AllItemTank)
-            {
-                foreach (VentilClass v in a)
                 {
-                    if (t.ReadyForFill == true && v.Status == 1)
+                    if(v.Id == 1 || v.Id == 4 || v.Id == 5)
                     {
-                        t.FillTank = true;
-                    }
-
-                    else
-                    {
-                        t.FillTank = false;
+                        if(v.Status == 1)
+                        {
+                            numberOfOperationalValves++;
+                        }
                     }
                 }
+                if(numberOfOperationalValves == 3)
+                {
+                    t.FillTank = true;
+                }
+                else
+                {
+                    t.FillTank = false;
+                }
             }
-
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemTank, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/TankJSON.json", output);
         }
 
         public void EmptyTankSetting()
         {
-
+            int numberOfOperationalValves = 0;
+            foreach (TankClass t in allItemViewModel.AllItemTank)
+            {
+                foreach (PumpClass p in allItemViewModel.AllItemPump)
+                {
+                    foreach (VentilClass v in allItemViewModel.AllItemVentil)
+                    {
+                        if (v.Id == 1 || v.Id == 2 || v.Id == 3 || v.Id == 5 || p.Status == 1)
+                        {
+                            if (v.Status == 1 || p.Status == 1)
+                            {
+                                numberOfOperationalValves++;
+                            }
+                        }
+                    }
+                    if (numberOfOperationalValves == 5)
+                    {
+                        t.EmptyTank = true;
+                    }
+                    else
+                    {
+                        t.EmptyTank = false;
+                    }
+                }
+            }
+            string output = JsonConvert.SerializeObject(allItemViewModel.AllItemTank, Newtonsoft.Json.Formatting.Indented);
+            System.IO.File.WriteAllText("DAL/TankJSON.json", output);
         }
     }
 
