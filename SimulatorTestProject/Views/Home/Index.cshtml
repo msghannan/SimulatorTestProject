@@ -625,17 +625,21 @@
 
 
 
-    <div id="DetailsDiv" style="background: red; width: 500px; height: auto; margin-top: 10px">
+    <div id="DetailsDiv" style="background: white; width: auto; height: auto; margin-top: 10px">
         @foreach (var t in Model.AllItemTank)
         {
             if (t.FillTank == true)
             {
                 <img src="~/Images/WarningGif.gif" />
+                <h1 style="display: inline">Påfyllning Pågår!</h1>
+                <img src="~/Images/WarningGif.gif" />
             }
 
-            if (t.EmptyTank== true)
+            if (t.EmptyTank == true)
             {
-                <img src="~/Images/GreenLight.png" />
+                <img src="~/Images/WarningGif.gif" />
+                <h1 style="display: inline">Tömning Pågår!</h1>
+                <img src="~/Images/WarningGif.gif" />
             }
         }
 
