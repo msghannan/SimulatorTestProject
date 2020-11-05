@@ -626,13 +626,20 @@
 
 
     <div id="DetailsDiv" style="background: red; width: 500px; height: auto; margin-top: 10px">
-        @foreach(var t in Model.AllItemTank)
+        @foreach (var t in Model.AllItemTank)
         {
-            if(t.FillTank == true)
+            if (t.FillTank == true)
             {
-                <img src="~/Images/GreenLight.png"/>
+                <img src="~/Images/GreenLight.png" />
+            }
+
+            if (t.EmptyTank== true)
+            {
+                <img src="~/Images/GreenLight.png" />
             }
         }
+
+
     </div>
 
 

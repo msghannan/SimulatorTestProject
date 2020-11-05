@@ -6,7 +6,7 @@
     "ReadyForFill": false,
     "ReadyForEmpty": false,
     "FillTank": false,
-    "EmptyTank": false,
+    "EmptyTank": true,
     "ImageSRCActive": null
   }
 ]

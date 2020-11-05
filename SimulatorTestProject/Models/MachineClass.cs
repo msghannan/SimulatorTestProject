@@ -56,6 +56,7 @@ namespace SimulatorTestProject.ViewModel
                     }
             }
 
+            EmptyTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemPump, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/PumpJSON.json", output);
         }
@@ -117,6 +118,7 @@ namespace SimulatorTestProject.ViewModel
             }
 
             FillTankSetting();
+            EmptyTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
@@ -160,6 +162,7 @@ namespace SimulatorTestProject.ViewModel
                 }
             }
             FillTankSetting();
+            EmptyTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
@@ -198,6 +201,7 @@ namespace SimulatorTestProject.ViewModel
                 }
             }
 
+            EmptyTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
@@ -238,6 +242,7 @@ namespace SimulatorTestProject.ViewModel
                 }
             }
 
+            EmptyTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
@@ -295,6 +300,7 @@ namespace SimulatorTestProject.ViewModel
                 }
             }
             FillTankSetting();
+            EmptyTankSetting();
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemVentil, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/VentilJSON.json", output);
         }
@@ -470,15 +476,15 @@ namespace SimulatorTestProject.ViewModel
                 {
                     foreach (VentilClass v in allItemViewModel.AllItemVentil)
                     {
-                        if (v.Id == 1 || v.Id == 2 || v.Id == 3 || v.Id == 5 || p.Status == 1)
+                        if (v.Id == 1 || v.Id == 2 || v.Id == 3 || v.Id == 5 || p.Id == 1)
                         {
-                            if (v.Status == 1 || p.Status == 1)
+                            if (v.Status == 1)
                             {
                                 numberOfOperationalValves++;
                             }
                         }
                     }
-                    if (numberOfOperationalValves == 5)
+                    if (numberOfOperationalValves == 4)
                     {
                         t.EmptyTank = true;
                     }
