@@ -61,7 +61,7 @@
     width: 70px;
     font-size: 15px;
     margin-top: 210px;
-    margin-left: -76px;
+    margin-left: -120px;
 }
 
 #Ventil1CloseButton {
@@ -69,7 +69,7 @@
     width: 70px;
     font-size: 15px;
     margin-top: 210px;
-    margin-left: -76px;
+    margin-left: -120px;
 }
 
 #Pipe1CloseImg {
@@ -310,7 +310,7 @@
     margin-top: 180px
 }
 
-#EmptyButton {
+/*#EmptyButton {
     height: auto;
     width: 80px;
     font-size: 15px;
@@ -323,4 +323,4 @@
     font-size: 15px;
     margin-left: 300px;
     margin-top: 110px
-}
+}*/
