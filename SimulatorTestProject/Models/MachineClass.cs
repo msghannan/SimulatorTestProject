@@ -17,11 +17,9 @@ namespace SimulatorTestProject.ViewModel
         {
             foreach (VentilClass v in allItemViewModel.AllItemVentil)
             {
-                foreach (PipeClass pi in v.VentilPipeList.Where(pi => pi.Id == 5))
-                {
                     foreach (PumpClass pu in allItemViewModel.AllItemPump)
                     {
-                        if (pu.Id == id && pi.Status == 1)
+                        if (pu.Id == id)
                         {
                             switch (pu.Status)
                             {
@@ -56,7 +54,6 @@ namespace SimulatorTestProject.ViewModel
                             pu.Status = 2;
                         }
                     }
-                }
             }
 
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemPump, Newtonsoft.Json.Formatting.Indented);
@@ -437,10 +434,6 @@ namespace SimulatorTestProject.ViewModel
 
         public void FillTankSetting()
         {
-            int numberOfOperationalValves = 0;
-            foreach(TankClass t in allItemViewModel.AllItemTank)
-            {
-                foreach(VentilClass v in allItemViewModel.AllItemVentil)
                 {
                     if(v.Id == 1 || v.Id == 4 || v.Id == 5)
                     {

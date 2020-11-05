@@ -4,7 +4,7 @@
     "TankName": null,
     "Status": 2,
     "ReadyForFill": false,
-    "ReadyForEmpty": false,
+    "ReadyForEmpty": true,
     "FillTank": false,
     "EmptyTank": false,
     "ImageSRCActive": null
