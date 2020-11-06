@@ -353,6 +353,7 @@ namespace SimulatorTestProject.ViewModel
             foreach (TankClass t in allItemViewModel.AllItemTank)
             {
                 t.ReadyForEmpty = false;
+                t.EmptyTank = false;
             }
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemTank, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/TankJSON.json", output);
@@ -405,6 +406,7 @@ namespace SimulatorTestProject.ViewModel
             foreach (TankClass t in allItemViewModel.AllItemTank)
             {
                 t.ReadyForFill = false;
+                t.FillTank = false;
             }
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemTank, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/TankJSON.json", output);

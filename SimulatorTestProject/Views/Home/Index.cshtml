@@ -63,6 +63,20 @@
             margin-left: 50px;
             margin-top: 0px
         }
+
+        #TankCloseImg {
+            height: 260px;
+            width: 400px;
+            margin-top: -540px;
+            margin-left: 723px;
+        }
+
+                #TankOpenImg {
+            height: 260px;
+            width: 400px;
+            margin-top: -540px;
+            margin-left: 723px;
+        }
     </style>
 
 
@@ -103,179 +117,99 @@
 
 
 
-    <div class="Pipe-Map" style="background-color: cornflowerblue ">
-        <!-- Modal Ventil -->
-        <div class="modal fade" id="ventilVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Varning!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Du kan inte aktivera ventilen!
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+<div class="Pipe-Map" style="background-color: cornflowerblue ">
+    <!-- Modal Ventil -->
+    <div class="modal fade" id="ventilVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Varning!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Du kan inte aktivera ventilen!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-        <!-- Modal Pump -->
-        <div class="modal fade" id="pumpVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Varning!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Du kan inte aktivera pumpen!
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+    </div>
+    <!-- Modal Pump -->
+    <div class="modal fade" id="pumpVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Varning!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Du kan inte aktivera pumpen!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-        <!-- Modal Knapp Tömning/Fyllning -->
-        <div class="modal fade" id="KnappVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Varning!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Går ej att aktivera!
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+    </div>
+    <!-- Modal Knapp Tömning/Fyllning -->
+    <div class="modal fade" id="KnappVarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Varning!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Går ej att aktivera!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        @foreach (var t in Model.AllItemTank.Where(t => t.Id == 1))
+    @foreach (var t in Model.AllItemTank.Where(t => t.Id == 1))
+    {
+        if (t.ReadyForEmpty == false && t.ReadyForFill == false)
         {
-            if (t.ReadyForEmpty == false && t.ReadyForFill == false)
-            {
-                <a id="EmptyButton" class="btn btn-primary" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Töm Tanken</a>
-            }
+            <a id="EmptyButton" class="btn btn-primary" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Töm Tanken</a>
+        }
 
-            else if (t.ReadyForEmpty == true && t.ReadyForFill == false)
-            {
-                <a id="EmptyButton" class="btn btn-primary" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Stoppa tömning</a>
-            }
-            else if (t.ReadyForFill == true)
-            {
-                <a id="EmptyButton" class="btn btn-primary" data-toggle="modal" data-target="#KnappVarning" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Töm Tanken</a>
-            }
-
-
-
-
-            if (t.ReadyForFill == false && t.ReadyForEmpty == false)
-            {
-                <a id="FillButton" class="btn btn-primary" href="Home/ReadyForFillMethod/@t.Id.ToString()">Fyll Tanken</a>
-            }
-            else if (t.ReadyForFill == true && t.ReadyForEmpty == false)
-            {
-                <a id="FillButton" class="btn btn-primary" href="Home/ReadyForFillMethod/@t.Id.ToString()">Stoppa påfyllning</a>
-            }
-            else if (t.ReadyForEmpty == true)
-            {
-                <a id="FillButton" class="btn btn-primary" data-toggle="modal" data-target="#KnappVarning" href="Home/ReadyForFillMethod/@t.Id.ToString()">Fyll Tanken</a>
-
-            }
-
+        else if (t.ReadyForEmpty == true && t.ReadyForFill == false)
+        {
+            <a id="EmptyButton" class="btn btn-primary" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Stoppa tömning</a>
+        }
+        else if (t.ReadyForFill == true)
+        {
+            <a id="EmptyButton" class="btn btn-primary" data-toggle="modal" data-target="#KnappVarning" href="Home/ReadyForEmptyMethod/@t.Id.ToString()">Töm Tanken</a>
         }
 
 
 
 
-
-
-
-
-
-
-        @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 1))
+        if (t.ReadyForFill == false && t.ReadyForEmpty == false)
         {
-            foreach (var pi in v.VentilPipeList)
-            {
-                if (v.Status == 1 && pi.Status == 1)
-                {
+            <a id="FillButton" class="btn btn-primary" href="Home/ReadyForFillMethod/@t.Id.ToString()">Fyll Tanken</a>
+        }
+        else if (t.ReadyForFill == true && t.ReadyForEmpty == false)
+        {
+            <a id="FillButton" class="btn btn-primary" href="Home/ReadyForFillMethod/@t.Id.ToString()">Stoppa påfyllning</a>
+        }
+        else if (t.ReadyForEmpty == true)
+        {
+            <a id="FillButton" class="btn btn-primary" data-toggle="modal" data-target="#KnappVarning" href="Home/ReadyForFillMethod/@t.Id.ToString()">Fyll Tanken</a>
 
-                    <a id="Ventil1CloseButton" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Stäng</a>
-
-                    <img id="Ventil1ActiveImg" src="~/Images/VentilSymbolGreen.png" />
-
-                    @foreach (PipeClass p in v.VentilPipeList)
-                    {
-                        <img id="Pipe1ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
-                    }
-                }
-                if (v.Status == 1 && pi.Status == 2)
-                {
-                    <a id="Ventil1CloseButton" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Stäng</a>
-
-                    <img id="Ventil1ActiveImg" src="~/Images/VentilSymbolGreen.png" />
-
-                    @foreach (PipeClass p in v.VentilPipeList)
-                    {
-                        <img id="Pipe1ActiveImg" src="~/Images/Pipe1.png" />
-                    }
-                }
-                else if (v.Status == 2 && v.Activatable == false)
-                {
-                    <a id="Ventil1OpenButton" data-toggle="modal" data-target="#ventilVarning" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Öppna</a>
-
-
-                    <img id="Ventil1CloseImg" src="~/Images/VentilSymbol.png" />
-
-                    @foreach (PipeClass p in v.VentilPipeList)
-                    {
-                        if (p.Status == 1)
-                        {
-                            <img id="Pipe1CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                        }
-
-                        else if (p.Status == 2)
-                        {
-                            <img id="Pipe1CloseImg" src="~/Images/Pipe1.png" />
-                        }
-                    }
-                }
-
-                else if (v.Status == 2 && v.Activatable == true)
-                {
-                    <a id="Ventil1OpenButton" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Öppna</a>
-
-                    <img id="Ventil1CloseImg" src="~/Images/VentilSymbol.png" />
-
-                    @foreach (PipeClass p in v.VentilPipeList)
-                    {
-                        if (p.Status == 1)
-                        {
-                            <img id="Pipe1CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                        }
-
-                        else if (p.Status == 2)
-                        {
-                            <img id="Pipe1CloseImg" src="~/Images/Pipe1.png" />
-                        }
-                    }
-                }
-            }
         }
 
+    }
 
 
 
@@ -283,345 +217,441 @@
 
 
 
-        @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 4))
+
+
+
+    @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 1))
+    {
+        foreach (var pi in v.VentilPipeList)
         {
-            if (v.Status == 1)
+            if (v.Status == 1 && pi.Status == 1)
             {
 
-                <img id="Ventil4ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+                <a id="Ventil1CloseButton" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Stäng</a>
+
+                <img id="Ventil1ActiveImg" src="~/Images/VentilSymbolGreen.png" />
 
                 @foreach (PipeClass p in v.VentilPipeList)
                 {
-                    <img id="Pipe2ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+                    <img id="Pipe1ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+            }
+            if (v.Status == 1 && pi.Status == 2)
+            {
+                <a id="Ventil1CloseButton" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Stäng</a>
+
+                <img id="Ventil1ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+
+                @foreach (PipeClass p in v.VentilPipeList)
+                {
+                    <img id="Pipe1ActiveImg" src="~/Images/Pipe1.png" />
+                }
+            }
+            else if (v.Status == 2 && v.Activatable == false)
+            {
+                <a id="Ventil1OpenButton" data-toggle="modal" data-target="#ventilVarning" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Öppna</a>
+
+
+                <img id="Ventil1CloseImg" src="~/Images/VentilSymbol.png" />
+
+                @foreach (PipeClass p in v.VentilPipeList)
+                {
+                    if (p.Status == 1)
+                    {
+                        <img id="Pipe1CloseImg" src="@Url.Content(p.ImageSRCActive)" />
+                    }
+
+                    else if (p.Status == 2)
+                    {
+                        <img id="Pipe1CloseImg" src="~/Images/Pipe1.png" />
+                    }
+                }
+            }
+
+            else if (v.Status == 2 && v.Activatable == true)
+            {
+                <a id="Ventil1OpenButton" class="btn btn-primary" href="Home/ToggleVentil1/@v.Id.ToString()">Öppna</a>
+
+                <img id="Ventil1CloseImg" src="~/Images/VentilSymbol.png" />
+
+                @foreach (PipeClass p in v.VentilPipeList)
+                {
+                    if (p.Status == 1)
+                    {
+                        <img id="Pipe1CloseImg" src="@Url.Content(p.ImageSRCActive)" />
+                    }
+
+                    else if (p.Status == 2)
+                    {
+                        <img id="Pipe1CloseImg" src="~/Images/Pipe1.png" />
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+    @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 4))
+    {
+        if (v.Status == 1)
+        {
+
+            <img id="Ventil4ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                <img id="Pipe2ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+            }
+
+            <a id="Ventil4CloseButton" class="btn btn-primary" href="Home/ToggleVentil4/@v.Id.ToString()">Stäng</a>
+
+        }
+
+        else if (v.Status == 2 && v.Activatable == false)
+        {
+
+            <img id="Ventil4CloseImg" src="~/Images/VentilSymbol.png" />
+
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                if (p.Status == 1)
+                {
+                    <img id="Pipe2CloseImg" src="@Url.Content(p.ImageSRCActive)" />
                 }
 
-                <a id="Ventil4CloseButton" class="btn btn-primary" href="Home/ToggleVentil4/@v.Id.ToString()">Stäng</a>
+                else if (p.Status == 2)
+                {
+                    <img id="Pipe2CloseImg" src="~/Images/Pipe2.png" />
+                }
+            }
 
+            <a id="Ventil4OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#ventilVarning" href="Home/ToggleVentil4/@v.Id.ToString()">Öppna</a>
+        }
+        else if (v.Status == 2 && v.Activatable == true)
+        {
+
+            <img id="Ventil4CloseImg" src="~/Images/VentilSymbol.png" />
+
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                if (p.Status == 1)
+                {
+                    <img id="Pipe2CloseImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+
+                else if (p.Status == 2)
+                {
+                    <img id="Pipe2CloseImg" src="~/Images/Pipe2.png" />
+                }
+            }
+
+            <a id="Ventil4OpenButton" class="btn btn-primary" href="Home/ToggleVentil4/@v.Id.ToString()">Öppna</a>
+        }
+    }
+
+
+
+
+
+
+
+    @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 2))
+    {
+        if (v.Status == 1)
+        {
+
+            <a id="Ventil2CloseButton" class="btn btn-primary" href="Home/ToggleVentil2/@v.Id.ToString()">Stäng</a>
+
+            <img id="Ventil2ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                <img id="Pipe6ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+            }
+
+        }
+
+        else if (v.Status == 2 && v.Activatable == false)
+        {
+
+
+            <a id="Ventil2OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#ventilVarning" href="Home/ToggleVentil2/@v.Id.ToString()">Öppna</a>
+
+            <img id="Ventil2CloseImg" src="~/Images/VentilSymbol.png" />
+
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                if (p.Status == 1)
+                {
+                    <img id="Pipe6CloseImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+
+                else if (p.Status == 2)
+                {
+                    <img id="Pipe6CloseImg" src="~/Images/Pipe6.png" />
+                }
+            }
+
+        }
+        else if (v.Status == 2 && v.Activatable == true)
+        {
+
+
+            <a id="Ventil2OpenButton" class="btn btn-primary" href="Home/ToggleVentil2/@v.Id.ToString()">Öppna</a>
+
+            <img id="Ventil2CloseImg" src="~/Images/VentilSymbol.png" />
+
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                if (p.Status == 1)
+                {
+                    <img id="Pipe6CloseImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+
+                else if (p.Status == 2)
+                {
+                    <img id="Pipe6CloseImg" src="~/Images/Pipe6.png" />
+                }
+            }
+
+        }
+    }
+
+
+
+
+    @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 3))
+    {
+        if (v.Status == 1)
+        {
+            <a id="Ventil3CloseButton" class="btn btn-primary" href="Home/ToggleVentil3/@v.Id.ToString()">Stäng</a>
+
+            <img id="Ventil3ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                <img id="Pipe4ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+            }
+
+
+
+        }
+        else if (v.Status == 2 && v.Activatable == false)
+        {
+
+
+            <a id="Ventil3OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#ventilVarning" href="Home/ToggleVentil3/@v.Id.ToString()">Öppna</a>
+
+            <img id="Ventil3CloseImg" src="~/Images/VentilSymbol.png" />
+
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                if (p.Status == 1)
+                {
+                    <img id="Pipe4CloseImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+
+                else if (p.Status == 2)
+                {
+                    <img id="Pipe4CloseImg" src="~/Images/Pipe4.png" />
+                }
+            }
+
+        }
+        else if (v.Status == 2 && v.Activatable == true)
+        {
+
+
+            <a id="Ventil3OpenButton" class="btn btn-primary" href="Home/ToggleVentil3/@v.Id.ToString()">Öppna</a>
+
+            <img id="Ventil3CloseImg" src="~/Images/VentilSymbol.png" />
+
+            @foreach (PipeClass p in v.VentilPipeList)
+            {
+                if (p.Status == 1)
+                {
+                    <img id="Pipe4CloseImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+
+                else if (p.Status == 2)
+                {
+                    <img id="Pipe4CloseImg" src="~/Images/Pipe4.png" />
+                }
+            }
+
+        }
+    }
+
+
+
+    @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 5))
+    {
+        foreach (var pi in v.VentilPipeList)
+        {
+            if (v.Status == 1 && pi.Status == 1)
+            {
+
+
+                <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/ToggleVentil5/@v.Id.ToString()">Stäng</a>
+
+                <img id="Ventil5ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+
+
+                @foreach (PipeClass p in v.VentilPipeList)
+                {
+                    <img id="Pipe3ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+
+
+
+            }
+            if (v.Status == 1 && pi.Status == 2)
+            {
+                <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/ToggleVentil5/@v.Id.ToString()">Stäng</a>
+
+                <img id="Ventil5ActiveImg" src="~/Images/VentilSymbolGreen.png" />
+
+                @foreach (PipeClass p in v.VentilPipeList)
+                {
+                    <img id="Pipe3CloseImg" src="~/Images/Pipe3.png" />
+                }
             }
 
             else if (v.Status == 2 && v.Activatable == false)
             {
 
-                <img id="Ventil4CloseImg" src="~/Images/VentilSymbol.png" />
+
+                <a id="Ventil5OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#ventilVarning" href="Home/ToggleVentil5/@v.Id.ToString()">Öppna</a>
+
+                <img id="Ventil5CloseImg" src="~/Images/VentilSymbol.png" />
 
                 @foreach (PipeClass p in v.VentilPipeList)
                 {
                     if (p.Status == 1)
                     {
-                        <img id="Pipe2CloseImg" src="@Url.Content(p.ImageSRCActive)" />
+                        <img id="Pipe3CloseImg" src="@Url.Content(p.ImageSRCActive)" />
                     }
 
                     else if (p.Status == 2)
-                    {
-                        <img id="Pipe2CloseImg" src="~/Images/Pipe2.png" />
-                    }
-                }
-
-                <a id="Ventil4OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#ventilVarning" href="Home/ToggleVentil4/@v.Id.ToString()">Öppna</a>
-            }
-            else if (v.Status == 2 && v.Activatable == true)
-            {
-
-                <img id="Ventil4CloseImg" src="~/Images/VentilSymbol.png" />
-
-                @foreach (PipeClass p in v.VentilPipeList)
-                {
-                    if (p.Status == 1)
-                    {
-                        <img id="Pipe2CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                    }
-
-                    else if (p.Status == 2)
-                    {
-                        <img id="Pipe2CloseImg" src="~/Images/Pipe2.png" />
-                    }
-                }
-
-                <a id="Ventil4OpenButton" class="btn btn-primary" href="Home/ToggleVentil4/@v.Id.ToString()">Öppna</a>
-            }
-        }
-
-
-
-
-
-
-
-        @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 2))
-        {
-            if (v.Status == 1)
-            {
-
-                <a id="Ventil2CloseButton" class="btn btn-primary" href="Home/ToggleVentil2/@v.Id.ToString()">Stäng</a>
-
-                <img id="Ventil2ActiveImg" src="~/Images/VentilSymbolGreen.png" />
-
-                @foreach (PipeClass p in v.VentilPipeList)
-                {
-                    <img id="Pipe6ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
-                }
-
-            }
-
-            else if (v.Status == 2 && v.Activatable == false)
-            {
-
-
-                <a id="Ventil2OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#ventilVarning" href="Home/ToggleVentil2/@v.Id.ToString()">Öppna</a>
-
-                <img id="Ventil2CloseImg" src="~/Images/VentilSymbol.png" />
-
-                @foreach (PipeClass p in v.VentilPipeList)
-                {
-                    if (p.Status == 1)
-                    {
-                        <img id="Pipe6CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                    }
-
-                    else if (p.Status == 2)
-                    {
-                        <img id="Pipe6CloseImg" src="~/Images/Pipe6.png" />
-                    }
-                }
-
-            }
-            else if (v.Status == 2 && v.Activatable == true)
-            {
-
-
-                <a id="Ventil2OpenButton" class="btn btn-primary" href="Home/ToggleVentil2/@v.Id.ToString()">Öppna</a>
-
-                <img id="Ventil2CloseImg" src="~/Images/VentilSymbol.png" />
-
-                @foreach (PipeClass p in v.VentilPipeList)
-                {
-                    if (p.Status == 1)
-                    {
-                        <img id="Pipe6CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                    }
-
-                    else if (p.Status == 2)
-                    {
-                        <img id="Pipe6CloseImg" src="~/Images/Pipe6.png" />
-                    }
-                }
-
-            }
-        }
-
-
-
-
-        @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 3))
-        {
-            if (v.Status == 1)
-            {
-                <a id="Ventil3CloseButton" class="btn btn-primary" href="Home/ToggleVentil3/@v.Id.ToString()">Stäng</a>
-
-                <img id="Ventil3ActiveImg" src="~/Images/VentilSymbolGreen.png" />
-
-                @foreach (PipeClass p in v.VentilPipeList)
-                {
-                    <img id="Pipe4ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
-                }
-
-
-
-            }
-            else if (v.Status == 2 && v.Activatable == false)
-            {
-
-
-                <a id="Ventil3OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#ventilVarning" href="Home/ToggleVentil3/@v.Id.ToString()">Öppna</a>
-
-                <img id="Ventil3CloseImg" src="~/Images/VentilSymbol.png" />
-
-                @foreach (PipeClass p in v.VentilPipeList)
-                {
-                    if (p.Status == 1)
-                    {
-                        <img id="Pipe4CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                    }
-
-                    else if (p.Status == 2)
-                    {
-                        <img id="Pipe4CloseImg" src="~/Images/Pipe4.png" />
-                    }
-                }
-
-            }
-            else if (v.Status == 2 && v.Activatable == true)
-            {
-
-
-                <a id="Ventil3OpenButton" class="btn btn-primary" href="Home/ToggleVentil3/@v.Id.ToString()">Öppna</a>
-
-                <img id="Ventil3CloseImg" src="~/Images/VentilSymbol.png" />
-
-                @foreach (PipeClass p in v.VentilPipeList)
-                {
-                    if (p.Status == 1)
-                    {
-                        <img id="Pipe4CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                    }
-
-                    else if (p.Status == 2)
-                    {
-                        <img id="Pipe4CloseImg" src="~/Images/Pipe4.png" />
-                    }
-                }
-
-            }
-        }
-
-
-
-        @foreach (var v in Model.AllItemVentil.Where(v => v.Id == 5))
-        {
-            foreach (var pi in v.VentilPipeList)
-            {
-                if (v.Status == 1 && pi.Status == 1)
-                {
-
-
-                    <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/ToggleVentil5/@v.Id.ToString()">Stäng</a>
-
-                    <img id="Ventil5ActiveImg" src="~/Images/VentilSymbolGreen.png" />
-
-
-                    @foreach (PipeClass p in v.VentilPipeList)
-                    {
-                        <img id="Pipe3ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
-                    }
-
-
-
-                }
-                if (v.Status == 1 && pi.Status == 2)
-                {
-                    <a id="Ventil5CloseButton" class="btn btn-primary" href="Home/ToggleVentil5/@v.Id.ToString()">Stäng</a>
-
-                    <img id="Ventil5ActiveImg" src="~/Images/VentilSymbolGreen.png" />
-
-                    @foreach (PipeClass p in v.VentilPipeList)
                     {
                         <img id="Pipe3CloseImg" src="~/Images/Pipe3.png" />
                     }
                 }
 
-                else if (v.Status == 2 && v.Activatable == false)
+            }
+            else if (v.Status == 2 && v.Activatable == true)
+            {
+
+
+                <a id="Ventil5OpenButton" class="btn btn-primary" href="Home/ToggleVentil5/@v.Id.ToString()">Öppna</a>
+
+                <img id="Ventil5CloseImg" src="~/Images/VentilSymbol.png" />
+
+                @foreach (PipeClass p in v.VentilPipeList)
                 {
-
-
-                    <a id="Ventil5OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#ventilVarning" href="Home/ToggleVentil5/@v.Id.ToString()">Öppna</a>
-
-                    <img id="Ventil5CloseImg" src="~/Images/VentilSymbol.png" />
-
-                    @foreach (PipeClass p in v.VentilPipeList)
+                    if (p.Status == 1)
                     {
-                        if (p.Status == 1)
-                        {
-                            <img id="Pipe3CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                        }
-
-                        else if (p.Status == 2)
-                        {
-                            <img id="Pipe3CloseImg" src="~/Images/Pipe3.png" />
-                        }
+                        <img id="Pipe3CloseImg" src="@Url.Content(p.ImageSRCActive)" />
                     }
 
-                }
-                else if (v.Status == 2 && v.Activatable == true)
-                {
-
-
-                    <a id="Ventil5OpenButton" class="btn btn-primary" href="Home/ToggleVentil5/@v.Id.ToString()">Öppna</a>
-
-                    <img id="Ventil5CloseImg" src="~/Images/VentilSymbol.png" />
-
-                    @foreach (PipeClass p in v.VentilPipeList)
+                    else if (p.Status == 2)
                     {
-                        if (p.Status == 1)
-                        {
-                            <img id="Pipe3CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                        }
-
-                        else if (p.Status == 2)
-                        {
-                            <img id="Pipe3CloseImg" src="~/Images/Pipe3.png" />
-                        }
+                        <img id="Pipe3CloseImg" src="~/Images/Pipe3.png" />
                     }
-
                 }
+
             }
         }
+    }
 
 
 
 
 
 
-        @foreach (var pu in Model.AllItemPump)
+    @foreach (var pu in Model.AllItemPump)
+    {
+        if (pu.Status == 1)
         {
-            if (pu.Status == 1)
+
+
+            <a id="Pump1CloseButton" class="btn btn-primary" href="Home/TogglePump1/@pu.Id.ToString()">Stäng</a>
+
+            <img id="Pump1OpenImg" src="~/Images/PumpSymbolGreen.png" />
+
+            @foreach (PipeClass p in pu.PumpPipeList)
             {
-
-
-                <a id="Pump1CloseButton" class="btn btn-primary" href="Home/TogglePump1/@pu.Id.ToString()">Stäng</a>
-
-                <img id="Pump1OpenImg" src="~/Images/PumpSymbolGreen.png" />
-
-                @foreach (PipeClass p in pu.PumpPipeList)
-                {
-                    <img id="Pipe5ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
-                }
-
-
-
+                <img id="Pipe5ActiveImg" src="@Url.Content(p.ImageSRCActive)" />
             }
 
-            else if (pu.Status == 2 && pu.Activatable == false)
+
+
+        }
+
+        else if (pu.Status == 2 && pu.Activatable == false)
+        {
+
+            <a id="Pump1OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#pumpVarning" href="Home/TogglePump1/@pu.Id.ToString()">Öppna</a>
+
+
+            <img id="Pump1CloseImg" src="~/Images/PumpSymbol.png" />
+            @foreach (PipeClass p in pu.PumpPipeList)
             {
-
-                <a id="Pump1OpenButton" class="btn btn-primary" data-toggle="modal" data-target="#pumpVarning" href="Home/TogglePump1/@pu.Id.ToString()">Öppna</a>
-
-
-                <img id="Pump1CloseImg" src="~/Images/PumpSymbol.png" />
-                @foreach (PipeClass p in pu.PumpPipeList)
+                if (p.Status == 1)
                 {
-                    if (p.Status == 1)
-                    {
-                        <img id="Pipe5CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                    }
-
-                    else if (p.Status == 2)
-                    {
-                        <img id="Pipe5CloseImg" src="~/Images/Pipe5.png" />
-                    }
+                    <img id="Pipe5CloseImg" src="@Url.Content(p.ImageSRCActive)" />
                 }
 
-            }
-            else if (pu.Status == 2 && pu.Activatable == true)
-            {
-                <a id="Pump1OpenButton" class="btn btn-primary" href="Home/TogglePump1/@pu.Id.ToString()">Öppna</a>
-
-                <img id="Pump1CloseImg" src="~/Images/PumpSymbol.png" />
-                @foreach (PipeClass p in pu.PumpPipeList)
+                else if (p.Status == 2)
                 {
-                    if (p.Status == 1)
-                    {
-                        <img id="Pipe5CloseImg" src="@Url.Content(p.ImageSRCActive)" />
-                    }
+                    <img id="Pipe5CloseImg" src="~/Images/Pipe5.png" />
+                }
+            }
 
-                    else if (p.Status == 2)
-                    {
-                        <img id="Pipe5CloseImg" src="~/Images/Pipe5.png" />
-                    }
+        }
+        else if (pu.Status == 2 && pu.Activatable == true)
+        {
+            <a id="Pump1OpenButton" class="btn btn-primary" href="Home/TogglePump1/@pu.Id.ToString()">Öppna</a>
+
+            <img id="Pump1CloseImg" src="~/Images/PumpSymbol.png" />
+            @foreach (PipeClass p in pu.PumpPipeList)
+            {
+                if (p.Status == 1)
+                {
+                    <img id="Pipe5CloseImg" src="@Url.Content(p.ImageSRCActive)" />
+                }
+
+                else if (p.Status == 2)
+                {
+                    <img id="Pipe5CloseImg" src="~/Images/Pipe5.png" />
                 }
             }
         }
+    }
 
-    </div>
+
+
+
+    @foreach (var t in Model.AllItemTank)
+    {
+        if (t.FillTank == true || t.EmptyTank == true)
+        {
+            <img id="TankOpenImg" src="~/Images/TankSymbolGreen.png" />
+        }
+
+        else if (t.FillTank == false || t.EmptyTank == false)
+        {
+            <img id="TankCloseImg" src="~/Images/TankSymbol.png"  />
+        }
+    }
+
+</div>
 
 
 
