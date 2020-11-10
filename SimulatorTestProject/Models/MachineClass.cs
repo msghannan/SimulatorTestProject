@@ -15,45 +15,49 @@ namespace SimulatorTestProject.ViewModel
 
         public void TogglePump1(int id)
         {
-            foreach (VentilClass v in allItemViewModel.AllItemVentil)
+            foreach (VentilClass v in allItemViewModel.AllItemVentil.Where(v => v.Id == 3))
             {
-                    foreach (PumpClass pu in allItemViewModel.AllItemPump)
+                foreach (PumpClass pu in allItemViewModel.AllItemPump)
+                {
+                    if (pu.Id == id && v.Status == 1)
                     {
-                        if (pu.Id == id)
+                        switch (pu.Status)
                         {
-                            switch (pu.Status)
+                            case 1:
+                                pu.Status = 2;
+                                break;
+                            case 2:
+                                pu.Status = 1;
+                                break;
+                        }
+
+                        foreach (PipeClass p in pu.PumpPipeList)
+                        {
+                            switch (p.Status)
                             {
                                 case 1:
-                                    pu.Status = 2;
+                                    p.Status = 2;
                                     break;
                                 case 2:
-                                    pu.Status = 1;
+                                    p.Status = 1;
                                     break;
                             }
-
-                            foreach (PipeClass p in pu.PumpPipeList)
-                            {
-                                switch (p.Status)
-                                {
-                                    case 1:
-                                        p.Status = 2;
-                                        break;
-                                    case 2:
-                                        p.Status = 1;
-                                        break;
-                                }
-                                break;
-                            }
                             break;
-
                         }
+                        break;
 
-                        else
+                    }
+
+                    else
+                    {
+                        pu.Activatable = false;
+                        pu.Status = 2;
+                        foreach (PipeClass p in pu.PumpPipeList)
                         {
-                            pu.Activatable = false;
-                            pu.Status = 2;
+                            p.Status = 2;
                         }
                     }
+                }
             }
 
             CallFillAndEmptyTank();
@@ -125,7 +129,7 @@ namespace SimulatorTestProject.ViewModel
         {
             foreach (VentilClass v in allItemViewModel.AllItemVentil)
             {
-                foreach(TankClass t in allItemViewModel.AllItemTank)
+                foreach (TankClass t in allItemViewModel.AllItemTank)
                 {
                     {
                         if (v.Id == id)
@@ -442,7 +446,7 @@ namespace SimulatorTestProject.ViewModel
             foreach (TankClass t in allItemViewModel.AllItemTank)
             {
                 foreach (VentilClass v in allItemViewModel.AllItemVentil)
-            {
+                {
                     if (v.Id == 1 || v.Id == 4 || v.Id == 5)
                     {
                         if (v.Status == 1)
@@ -460,7 +464,7 @@ namespace SimulatorTestProject.ViewModel
                     t.Status = 2;
                 }
             }
-            
+
             string output = JsonConvert.SerializeObject(allItemViewModel.AllItemTank, Newtonsoft.Json.Formatting.Indented);
             System.IO.File.WriteAllText("DAL/TankJSON.json", output);
         }
