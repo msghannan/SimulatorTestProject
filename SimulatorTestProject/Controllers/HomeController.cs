@@ -120,6 +120,14 @@ namespace SimulatorTestProject.Controllers
 
             return View(dataFromJson);
         }
+        public IActionResult DetailsTank(int id)
+        {
+            var webClient = new WebClient();
+            var jsonFile = webClient.DownloadString(@"DAL\TankJSON.json");
+            var dataFromJson = JsonConvert.DeserializeObject<List<TankClass>>(jsonFile).Where(j => j.Id == id);
+
+            return View(dataFromJson);
+        }
 
         public IActionResult DetailsPump(int id)
         {

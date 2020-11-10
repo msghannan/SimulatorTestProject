@@ -1,0 +1,15 @@
+﻿@using SimulatorTestProject.Models
+@model IEnumerable<SimulatorTestProject.Models.TankClass>
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+@foreach (TankClass tank in Model)
+{
+    <div class="card m-3" style="width:150px;">
+        <div class="card-header" style="text-align:center">
+            <b>@tank.TankName</b>
+        </div>
+    </div>
+}

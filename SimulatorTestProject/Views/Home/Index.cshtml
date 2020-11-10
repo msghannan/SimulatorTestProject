@@ -640,12 +640,12 @@
 
     @foreach (var t in Model.AllItemTank)
     {
-        if (t.FillTank == true || t.EmptyTank == true)
+        if (t.Status == 1)
         {
             <img id="TankOpenImg" src="~/Images/TankSymbolGreen.png" />
         }
 
-        else if (t.FillTank == false || t.EmptyTank == false)
+        else if (t.Status == 2)
         {
             <img id="TankCloseImg" src="~/Images/TankSymbol.png"  />
         }
@@ -658,14 +658,14 @@
     <div id="DetailsDiv" style="background: white; width: auto; height: auto; margin-top: 10px">
         @foreach (var t in Model.AllItemTank)
         {
-            if (t.FillTank == true)
+            if (t.Status == 1 && t.ReadyForFill == true)
             {
                 <img src="~/Images/WarningGif.gif" />
                 <h1 style="display: inline">Påfyllning Pågår!</h1>
                 <img src="~/Images/WarningGif.gif" />
             }
 
-            if (t.EmptyTank == true)
+            if (t.Status == 1 && t.ReadyForEmpty == true)
             {
                 <img src="~/Images/WarningGif.gif" />
                 <h1 style="display: inline">Tömning Pågår!</h1>

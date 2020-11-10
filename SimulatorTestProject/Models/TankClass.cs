@@ -12,8 +12,6 @@ namespace SimulatorTestProject.Models
         public int Status { get; set; }
         public bool ReadyForFill { get; set; }
         public bool ReadyForEmpty { get; set; }
-        public bool FillTank { get; set; }
-        public bool EmptyTank { get; set; }
         public string ImageSRCActive { get; set; }
     }
 }

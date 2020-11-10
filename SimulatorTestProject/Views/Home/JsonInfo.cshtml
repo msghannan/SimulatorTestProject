@@ -14,6 +14,10 @@
     #inner1 {
         float: left;
     }
+    #inner3{
+        float:left;
+        clear:left;
+    }
 
     #inner2 {
         float: left;
@@ -81,6 +85,38 @@
                     <img class="card-img-top" src="~/Images/PumpSymbol.png" style="height:100px; width:150px;" asp-append-version="true" />
                     <div class="card-footer text-center">
                         <a asp-controller="home" asp-action="detailsPump" asp-route-id="@p.Id"
+                           class="btn btn-primary m-1">View</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div id="inner3">
+        <h3>Tank</h3>
+        @foreach (TankClass t in Model.AllItemTank)
+        {
+            if (t.Status == 1)
+            {
+                <div class="card m-3" style="width:150px;">
+                    <div class="card-header" style="text-align:center">
+                        <h3>@t.TankName</h3>
+                    </div>
+                    <img class="card-img-top" src="~/Images/TankSymbolGreen.png" style="height:100px; width:150px;" asp-append-version="true" />
+                    <div class="card-footer text-center">
+                        <a asp-controller="home" asp-action="detailsTank" asp-route-id="@t.Id"
+                           class="btn btn-primary m-1">View</a>
+                    </div>
+                </div>
+            }
+            else if(t.Status == 2)
+            {
+                <div class="card m-3" style="width:150px;">
+                    <div class="card-header" style="text-align:center">
+                        <h3>@t.TankName</h3>
+                    </div>
+                    <img class="card-img-top" src="~/Images/TankSymbolGreen.png" style="height:100px; width:150px;" asp-append-version="true" />
+                    <div class="card-footer text-center">
+                        <a asp-controller="home" asp-action="detailsTank" asp-route-id="@t.Id"
                            class="btn btn-primary m-1">View</a>
                     </div>
                 </div>
