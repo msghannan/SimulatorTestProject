@@ -71,8 +71,6 @@ namespace SimulatorTestProject.ViewModel
             {
                 foreach (VentilClass v in allItemViewModel.AllItemVentil)
                 {
-                    foreach (VentilClass vc in allItemViewModel.AllItemVentil.Where(vc => vc.Id == 4))
-                    {
                         if (v.Id == id && t.ReadyForEmpty == true)
                         {
                             v.Activatable = true;
@@ -116,7 +114,6 @@ namespace SimulatorTestProject.ViewModel
                                 break;
                             }
                         }
-                    }
                     break;
                 }
             }
